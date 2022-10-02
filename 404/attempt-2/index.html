@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="https://cyolo.io/wp-content/uploads/2020/08/favicon.ico" type="image/x-icon">
+  <title>404 - Page not found - Cyolo</title>
+  
+  <style>
+    :root {
+      --cyolo-secondary-color: #000850;
+    }
+    html {
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: 'Heebo', sans-serif;
+      background-color: #eff2f6;
+      color: var(--cyolo-secondary-color);
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--cyolo-secondary-color);
+      padding: 12px 32px;
+      width: 100%;
+    }
+    main {
+      margin: auto;
+      text-align: center;
+      padding: 100px 15px;
+    }
+    main img {
+      max-width: 100%;
+    }
+    main .headline {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 40px;
+      font-size: 2.25rem;
+    }
+    main .description {
+      font-size: 1.125rem;
+      margin-top: 10px;
+    }
+    footer {
+      display: inline-block;
+      max-width: 450px;
+      margin-right: auto;
+      margin-left: auto;
+      border-top: 1px solid #b7b7b7;
+      font-size: 0.8125rem;
+      padding: 30px;
+    }
+    footer img {
+      vertical-align: middle;
+      margin-top: -4px;
+      margin-right: 5px;
+      margin-left: 2px;
+    }
+    footer span {
+      color: #474747;
+    }
+    @-webkit-keyframes swing {
+      0% { transform: rotate(3deg); }
+      100% { transform: rotate(-3deg); }
+    }
+    @keyframes swing {
+      0% { transform: rotate(3deg); }
+      100% { transform: rotate(-3deg); }
+    }
+  </style>
+</head>
 
+<body>
+  <header>
+    <img src="./logo.svg" alt="">
+  </header>
+  
+  <main>
+    <img src="./404-animation.gif" alt="">
+    <div class="headline">Oops!</div>
+    <div class="description">
+      Something went wrong with this page.
+      <br>
+      Go back and take it from scratch.
+    </div>
+  </main>
+
+  <footer>
+    Powered by <img src="./logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
+  </footer>
+</body>
+</html>
