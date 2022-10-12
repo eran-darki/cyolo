@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="https://cyolo.io/wp-content/uploads/2020/08/favicon.ico" type="image/x-icon">
+  <title>No Internet - Cyolo</title>
+  
+  <style>
+    :root {
+      --cyolo-secondary-color: #000850;
+    }
+    html {
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: 'Heebo', sans-serif;
+      background-color: #eff2f6;
+      color: var(--cyolo-secondary-color);
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--cyolo-secondary-color);
+      padding: 12px 32px;
+      width: 100%;
+    }
+    main {
+      margin: auto;
+      text-align: center;
+      padding: 100px 15px;
+    }
+    main .headline {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 40px;
+      font-size: 2.25rem;
+    }
+    main .description {
+      font-size: 1.125rem;
+      margin-top: 10px;
+    }
+    footer {
+      display: inline-block;
+      max-width: 450px;
+      margin-right: auto;
+      margin-left: auto;
+      border-top: 1px solid #b7b7b7;
+      font-size: 0.8125rem;
+      padding: 30px;
+    }
+    footer img {
+      vertical-align: middle;
+      margin-top: -4px;
+      margin-right: 5px;
+      margin-left: 2px;
+    }
+    footer span {
+      color: #474747;
+    }
+    .no-internet-aniamtion {
+      display: flex;
+      justify-content: center;
+    }
+    .gesture {
+      margin-right: 8px;
+      animation-name: float;
+      animation-timing-function: ease-in-out;
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+    }
+    .animation-right {
+      display: flex;
+      max-width: 150px;
+    }
+    .ripples-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin-left: -40px;
+      margin-top: -21px;
+    }
+    .ripple {
+      position: absolute;
+      border: 3px solid #000850;
+      opacity: 1;
+      border-radius: 100%;
+      animation-name: ripple;
+      animation-timing-function: cubic-bezier(0, 0.1, 0.7, 1);
+      animation-duration: 6s;
+      animation-iteration-count: infinite;
+    }
+    .three {
+      animation-delay: -4s;
+    }
+    .two {
+      animation-delay: -2s;
+    }
+    @keyframes ripple {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+      100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+      }
+    }
+    @-webkit-keyframes ripple {
+      0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+      }
+      100% {
+        width: 100px;
+        height: 100px;
+        opacity: 0;
+      }
+    }
+    @keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
+    }
+    @-webkit-keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="./logo.svg" alt="">
+  </header>
+  
+  <main>
+    <div class="no-internet-aniamtion">
+      <img class="gesture" src="./gesture.svg" alt="">
+      <div class="animation-right">
+        <img src="./antenna.svg" alt="">
+        <div class="ripples-wrapper">
+          <div class="ripple three"></div>
+          <div class="ripple two"></div>
+          <div class="ripple"></div>
+        </div>
+      </div>
+    </div>
+    <div class="headline">Oops!</div>
+    <div class="description">
+      Something is wrong with your internet connection.
+      <br>
+      Connect to the internet to continue.
+    </div>
+  </main>
+
+  <footer>
+    Powered by <img src="./logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
+  </footer>
+</body>
+</html>
