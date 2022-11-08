@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="css/style.min.css">
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Eran Darki</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:SharedWithUsers msdt:dt="string"></mso:SharedWithUsers>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Eran Darki</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ContentTypeId msdt:dt="string">0x01010034B529E0AC857848BDA77A7FA7F90CA5</mso:ContentTypeId>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+<mso:MediaLengthInSeconds msdt:dt="string"></mso:MediaLengthInSeconds>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body id="realistic">
+  <section class="success-page-wrapper">
+    <header>
+      <main>
+        <img src="img/check-icon.svg" class="check-icon" alt="">
+        <div class="success-page-headline">Success! Device connected</div>
+        <p>You may close this tab now</p>
+        <img src="img/laptop.svg" alt="">
+      </main>
+      <footer>
+        <div class="success-page-copyrights">
+          Powered by <img src="img/cyolo%20logo%20footer.svg" alt="">
+        </div>
+        <p>Your secure remote work environment</p>
+      </footer>
+    </header>
+  </section>
+</body>
+
+<script src="confetti.js"></script>
+<script>
+  (function (){
+    'use-strict';
+
+    setTimeout(() => {
+      confetti({
+      particleCount: 150,
+      startVelocity: 30,
+      colors: ['#4a75ff', '#f24465', '#fad11b', '#8429fb'],
+      spread: 360,
+      ticks: 1000,
+      shapes: ['square', 'square', 'square'],
+        origin: {
+          y: 0.35
+        }
+      });
+    }, 100);
+
+  })();
+</script>
+</html>
