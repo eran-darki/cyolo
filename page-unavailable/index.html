@@ -46,10 +46,10 @@
       max-width: 100%;
     }
     .illustration .imagery {
-      animation-name: float;
+      animation-name: show, float;
       animation-timing-function: ease-in-out;
-      animation-duration: 6s;
-      animation-iteration-count: infinite;
+      animation-duration: 0.8s, 6s;
+      animation-iteration-count: 1, infinite;
     }
     .illustration .plugs {
       transform: translateX(-18px);
@@ -57,7 +57,7 @@
     .illustration .plugs .plug-left,
     .illustration .plugs .plug-right,
     .illustration .spark {
-      animation-delay: 0.5s;
+      animation-delay: 0.4s;
     }
     .illustration .plugs .plug-left {
       transform: translateX(40px);
@@ -77,7 +77,7 @@
     }
     .illustration .spark {
       opacity: 0;
-      animation-name: display;
+      animation-name: show;
       animation-timing-function: linear;
       animation-duration: 0.4s;
       animation-iteration-count: 1;
@@ -157,7 +157,7 @@
       from { transform: translateX(0px); }
       to { transform: translateX(40px); }
     }
-    @keyframes display {
+    @keyframes show {
       0% { opacity: 0; }
       99% { opacity: 0; }
       100% { opacity: 1; }
