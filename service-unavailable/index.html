@@ -46,10 +46,13 @@
       max-width: 100%;
     }
     .illustration .imagery {
-      animation-name: show, float;
+      opacity: 0;
+      animation-name: fadeIn, float;
       animation-timing-function: ease-in-out;
-      animation-duration: 0.8s, 6s;
+      animation-duration: 0.5s, 6s;
       animation-iteration-count: 1, infinite;
+      animation-fill-mode: forwards;
+      animation-delay: 1s;
     }
     .illustration .plugs {
       transform: translateX(-18px);
@@ -161,6 +164,15 @@
       0% { opacity: 0; }
       99% { opacity: 0; }
       100% { opacity: 1; }
+    }
+    @-webkit-keyframes show {
+      0% { opacity: 0; }
+      99% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
