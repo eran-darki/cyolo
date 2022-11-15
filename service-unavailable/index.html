@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="https://cyolo.io/wp-content/uploads/2020/08/favicon.ico" type="image/x-icon">
+  <title>Page unavailable - Cyolo</title>
+  
+  <style>
+    :root {
+      --cyolo-secondary-color: #000850;
+    }
+    html {
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    html, body {
+      height: 100%;
+    }
+    body {
+      margin: 0;
+      font-family: 'Heebo', sans-serif;
+      background-color: #eff2f6;
+      color: var(--cyolo-secondary-color);
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      background-color: var(--cyolo-secondary-color);
+      padding: 12px 32px;
+      width: 100%;
+    }
+    main {
+      margin: auto;
+      text-align: center;
+      padding: 100px 15px;
+    }
+    main img {
+      max-width: 100%;
+    }
+    .illustration .imagery {
+      animation-name: show, float;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.8s, 6s;
+      animation-iteration-count: 1, infinite;
+    }
+    .illustration .plugs {
+      transform: translateX(-18px);
+    }
+    .illustration .plugs .plug-left,
+    .illustration .plugs .plug-right,
+    .illustration .spark {
+      animation-delay: 0.4s;
+    }
+    .illustration .plugs .plug-left {
+      transform: translateX(40px);
+      animation-name: move-left;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.5s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+    .illustration .plugs .plug-right {
+      position: relative;
+      animation-name: move-right;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.6s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+    }
+    .illustration .spark {
+      opacity: 0;
+      animation-name: show;
+      animation-timing-function: linear;
+      animation-duration: 0.4s;
+      animation-iteration-count: 1;
+      animation-fill-mode: forwards;
+      margin-top: 10px;
+    }
+    main .headline {
+      font-family: 'Montserrat', sans-serif;
+      margin-top: 50px;
+      font-size: 2.25rem;
+    }
+    main .description {
+      font-size: 1.125rem;
+      margin-top: 10px;
+    }
+    footer {
+      display: inline-block;
+      max-width: 450px;
+      margin-right: auto;
+      margin-left: auto;
+      border-top: 1px solid #b7b7b7;
+      font-size: 0.8125rem;
+      padding: 30px;
+    }
+    footer img {
+      vertical-align: middle;
+      margin-top: -4px;
+      margin-right: 5px;
+      margin-left: 2px;
+    }
+    footer span {
+      color: #474747;
+    }
+    @keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
+    }
+    @-webkit-keyframes float {
+      0% {
+        transform: translatey(0px);
+      }
+      50% {
+        transform: translatey(-20px);
+      }
+      100% {
+        transform: translatey(0px);
+      }
+    }
+    @keyframes move-left {
+      0% {
+        transform: translateX(40px);
+      }
+      100% {
+        transform: translateX(0px);
+      }
+    }
+    @-webkit-keyframes move-left {
+      0% {
+        transform: translateX(40px);
+      }
+      100% {
+        transform: translateX(0px);
+      }
+    }
+    @keyframes move-right {
+      from { transform: translateX(0px); }
+      to { transform: translateX(40px); }
+    }
+    @-webkit-keyframes move-right {
+      from { transform: translateX(0px); }
+      to { transform: translateX(40px); }
+    }
+    @keyframes show {
+      0% { opacity: 0; }
+      99% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <img src="./logo.svg" alt="">
+  </header>
+  
+  <main>
+    <div class="illustration">
+      <img class="imagery" src="./imagery.svg" alt="">
+      <div class="plugs">
+        <img class="plug-left" src="./plug-left.svg" alt="">
+        <img class="plug-right" src="./plug-right.svg" alt="">
+      </div>
+      <img class="spark" src="./spark.svg" alt="">
+    </div>
+    <div class="headline">Oops!</div>
+    <div class="description">
+      The service you are trying to access is unavailable.
+      <br>
+      Please contact your administrator.
+    </div>
+  </main>
+
+  <footer>
+    Powered by <img src="./logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
+  </footer>
+</body>
+</html>
