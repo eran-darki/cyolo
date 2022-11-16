@@ -13,6 +13,7 @@
   <style>
     :root {
       --cyolo-secondary-color: #000850;
+      --cyolo-bg-color: #eff2f6;
     }
     html {
       font-size: 16px;
@@ -27,7 +28,7 @@
     body {
       margin: 0;
       font-family: 'Heebo', sans-serif;
-      background-color: #eff2f6;
+      background-color: var(--cyolo-bg-color);
       color: var(--cyolo-secondary-color);
       display: flex;
       flex-direction: column;
@@ -42,7 +43,8 @@
       text-align: center;
       padding: 100px 15px;
     }
-    main img {
+    main .image-wrapper {
+      position: relative;
       max-width: 100%;
       animation-name: swing;
       animation-timing-function: ease-in-out;
@@ -51,16 +53,31 @@
       animation-direction: alternate;
       transform-origin: center 0;
     }
+    main .image-wrapper span {
+      position: absolute;
+      bottom: 56px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: bold;
+      font-size: 76px;
+      color: var(--cyolo-bg-color);
+      letter-spacing: 4px;
+    }
     main .headline {
       font-family: 'Montserrat', sans-serif;
       margin-top: 50px;
       font-size: 2.25rem;
     }
     main .description {
+      max-width: 800px;
       font-size: 1.125rem;
       margin-top: 10px;
     }
     footer {
+      display: inline-block;
+      max-width: 450px;
       margin-right: auto;
       margin-left: auto;
       border-top: 1px solid #b7b7b7;
@@ -93,7 +110,10 @@
   </header>
   
   <main>
-    <img src="./404.svg" alt="">
+    <div class="image-wrapper">
+      <span>404</span>
+      <img src="./404.svg" alt="">
+    </div>
     <div class="headline">Oops!</div>
     <div class="description">
       Sorry, this page could not be found.
