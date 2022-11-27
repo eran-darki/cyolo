@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+  <title>LettersDrop</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eff2f6;
+    }
+
+    .loader-wrapper {
+      position: relative;
+      font-family: 'Heebo', sans-serif;
+      font-size: 18px;
+      transform: translateY(-3.78em);
+      /* letter-spacing: 2px; */
+    }
+    
+    span {
+      position: relative;
+      top: 0.63em;
+      display: inline-block;
+      color: #000850;
+      opacity: 0;
+      transform: rotateX(-90deg);
+      animation-name: drop;
+      animation-duration: 1.2s;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    .letter2 {
+      animation-delay: 0.1s;
+    }
+
+    .letter3 {
+      animation-delay: 0.2s;
+    }
+
+    .letter4 {
+      animation-delay: 0.3s;
+
+    }
+
+    .letter5 {
+      animation-delay: 0.4s;
+    }
+
+    .letter6 {
+      animation-delay: 0.5s;
+    }
+
+    .letter7 {
+      animation-delay: 0.6s;
+    }
+
+    @-webkit-keyframes drop {
+        10% {
+            opacity: 0.5;
+        }
+        20% {
+            opacity: 1;
+            top: 3.78em;
+            transform: rotateX(-360deg);
+        }
+        80% {
+            opacity: 1;
+            top: 3.78em;
+            transform: rotateX(-360deg);
+        }
+        90% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 0;
+            top: 6.94em
+        }
+    }
+
+    @keyframes drop {
+        10% {
+            opacity: 0.5;
+        }
+        20% {
+            opacity: 1;
+            top: 3.78em;
+            transform: rotateX(-360deg);
+        }
+        80% {
+            opacity: 1;
+            top: 3.78em;
+            transform: rotateX(-360deg);
+        }
+        90% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 0;
+            top: 6.94em
+        }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="loader-wrapper">
+    <span class="letter1">L</span>  
+    <span class="letter2">O</span>  
+    <span class="letter3">A</span>  
+    <span class="letter4">D</span>  
+    <span class="letter5">I</span>  
+    <span class="letter6">N</span>  
+    <span class="letter7">G</span>  
+  </div>
+</body>
+</html>
