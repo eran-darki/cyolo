@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+  <title>BinaryCode</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #eff2f6;
+    }
+
+    .loader-wrapper {
+      position: relative;
+    }
+
+    .status {
+      font-family: 'Heebo', sans-serif;
+      font-size: 14px;
+      letter-spacing: 2px;
+      margin-top: 6px;
+      color: #000850;
+    }
+
+    .loader-wrapper .rotary {
+      position: absolute;
+      bottom: 14px;
+      width: 100%;
+      height: 50px;
+      background-color: #000850;
+      overflow: hidden;
+      display: flex;
+    }
+
+    .loader-wrapper .rotary .digit {
+      font-family: 'Heebo', sans-serif;
+      font-size: 18px;
+      list-style: none;
+      color: #eff2f6;
+      margin: 0;
+      margin-left: 6px;
+      padding: 0;
+      line-height: 24px;
+      animation-name: rotate;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+
+    .loader-wrapper .rotary .digit:nth-child(even) {
+      animation-duration: 1.4s;
+    }
+
+    .loader-wrapper .rotary .digit:nth-child(odd) {
+      animation-duration: 2.4s;
+    }
+
+    @-webkit-keyframes rotate {
+      to { transform: translateY(-240%); }
+    }
+
+    @keyframes rotate {
+      to { transform: translateY(-240%); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="loader-wrapper">
+    <img src="browser.svg" alt="">
+    <div class="rotary">
+      <div class="digit">
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+      </div>
+      <div class="digit">
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+      </div>
+      <div class="digit">
+        <div>1</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+        <div>1</div>
+      </div>
+      <div class="digit">
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+        <div>0</div>
+        <div>1</div>
+      </div>
+      <div class="digit">
+        <div>1</div>
+        <div>0</div>
+        <div>0</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>0</div>
+      </div>
+      <div class="digit">
+        <div>0</div>
+        <div>1</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+        <div>0</div>
+        <div>1</div>
+      </div>
+    </div>
+  </div>
+  <div class="status">LOADING...</div>
+</body>
+</html>
