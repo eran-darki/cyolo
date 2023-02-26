@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title></title>
+  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+  <title>Device Connected Successfully! - Cyolo</title>
   <link rel="stylesheet" href="css/style.min.css">
 
 <!--[if gte mso 9]><xml>
@@ -26,26 +27,25 @@
 </head>
 
 <body id="realistic">
-  <section class="success-page-wrapper">
-    <header>
-      <main>
-        <img src="img/check-icon.svg" class="check-icon" alt="">
-        <div class="success-page-headline">Success! Device connected</div>
-        <p>You may close this tab now</p>
-        <img src="img/laptop.svg" alt="">
-      </main>
-      <footer>
-        <div class="success-page-copyrights">
-          Powered by <img src="img/cyolo-logo-footer.svg" alt="">
-        </div>
-        <p>Your secure remote work environment</p>
-      </footer>
-    </header>
-  </section>
+  <header>
+    <img src="img/cyolo-logo.svg" alt="">
+  </header>
+
+  <main>
+    <img src="img/check-icon.svg" class="check-icon" alt="">
+    <div class="success-page-headline">Device Connected Successfully!</div>
+    <p>You will be redirected to your portal momentarily. If not, <a href="https://login.qa.cyolo.io/login">click here</a>.</p>
+    <img src="img/laptop.svg" alt="">
+  </main>
+
+  <footer>
+    Powered by <img src="img/cyolo-logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
+  </footer>
 </body>
 
 <script src="confetti.js"></script>
 <script>
+  // Launch confetti
   (function (){
     'use-strict';
 
@@ -64,5 +64,12 @@
     }, 100);
 
   })();
+</script>
+
+<script>
+  // Redirect page to user portal
+  window.setTimeout(function(){
+    window.location.href = "https://login.qa.cyolo.io/login";
+  }, 5000);
 </script>
 </html>
