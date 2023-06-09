@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="https://cyolo.io/img/favicon.svg" type="image/x-icon">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <title>Cyolo Coffee Card</title>
+</head>
+
+<body class="position-relative">
+  <section class="intro position-absolute top-0 start-0">
+
+  </section>
+
+  <!-- Checkbox -->
+  <div class="checkbox-wrapper">
+    <label class="btn btn-outline-primary" for="btncheck1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Checkbox 1
+      <input type="checkbox" class="btn-check save-cb-state" name="mycheckbox" id="btncheck1" autocomplete="off">
+    </label>
+  
+    <label class="btn btn-outline-primary" for="btncheck2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Checkbox 2
+      <input type="checkbox" class="btn-check save-cb-state" name="mycheckbox1" id="btncheck2" autocomplete="off">
+    </label>
+  
+    <label class="btn btn-outline-primary" for="btncheck3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      Checkbox 3
+      <input type="checkbox" class="btn-check save-cb-state" name="mycheckbox2" id="btncheck3" autocomplete="off">
+    </label>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Are You the Coffee Shop Owner?</h1>
+        </div>
+        <div class="modal-body">
+          Once approved by the coffee shop owner the coffee will be served. This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary deny-btn" data-bs-dismiss="modal">No, I'm Not</button>
+          <button type="button" class="btn btn-primary approved-btn" data-bs-dismiss="modal">Yes, I Am</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+<script>
+  // Avoid scoping issues by encapsulating code inside anonymous function
+  (function() {
+    // variable to store our current state
+    var cbstate;
+
+    // bind to the onload event
+    window.addEventListener('load', function() {
+      // Get the current state from localstorage
+      // State is stored as a JSON string
+      cbstate = JSON.parse(localStorage['CBState'] || '{}');
+    
+      // Loop through state array and restore checked 
+      // state for matching elements
+      for(var i in cbstate) {
+        var el = document.querySelector('input[name="' + i + '"]');
+        if (el) {
+          el.checked = true;
+          el.parentElement.classList.add('inactive');
+        }
+      }
+    
+      // Get all checkboxes that you want to monitor state for
+      var cb = document.getElementsByClassName('save-cb-state');
+    
+      // Loop through results and ...
+      for(var i = 0; i < cb.length; i++) {
+    
+        //bind click event handler
+        cb[i].addEventListener('click', function(evt) {
+          // If checkbox is checked then save to state
+          var checkbox = this;
+          
+          if (this.checked) {
+            // cbstate[this.name] = true;
+            // this.parentElement.classList.add('inactive');
+            
+            // Click Deny button
+            document.querySelector('.deny-btn').addEventListener('click', function() {
+              if (checkbox.checked) {
+                delete cbstate[checkbox.name];
+                checkbox.parentElement.classList.remove('inactive');
+                checkbox.checked = false;
+                localStorage.CBState = JSON.stringify(cbstate);
+              }
+             });
+
+            // Click approve button
+             document.querySelector('.approved-btn').addEventListener('click', function() {
+              if (checkbox.checked) {
+                cbstate[checkbox.name] = true;
+                checkbox.parentElement.classList.add('inactive');
+                checkbox.checked = true;
+                localStorage.CBState = JSON.stringify(cbstate);
+              }
+             });
+            }
+      
+      // Else remove from state
+          else if (cbstate[this.name]) {
+            delete cbstate[this.name];
+            this.parentElement.classList.remove('inactive');
+          }
+      
+      // Persist state
+          localStorage.CBState = JSON.stringify(cbstate);
+
+      // Print JSON when state changes    
+        // console.log(JSON.stringify(cbstate));
+        });
+      }
+    });
+    
+  })();
+</script>
+</html>

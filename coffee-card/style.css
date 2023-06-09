@@ -1,0 +1,22 @@
+:root {
+  --cyolo-secondary-color: #000850;
+}
+html {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+header {
+  background-color: var(--cyolo-secondary-color);
+  padding: 12px 32px;
+  width: 100%;
+}
+.inactive {
+  opacity: .5;
+  /* pointer-events: none; */
+}
+/* .btn-check {
+  position: relative;
+ } */
