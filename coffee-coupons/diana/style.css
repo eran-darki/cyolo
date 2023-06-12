@@ -1,5 +1,5 @@
 :root {
-  --primary-color: #064C66;
+  --primary-color: #064c66;
   --secondary-color: #007E7F;
   --light-color: #A5CE39;
 }
@@ -20,6 +20,12 @@ body {
   font-family: 'Heebo', sans-serif;
   font-variant-ligatures: none;
   color: #000;
+}
+
+.intro {
+  /* background-color:  rgba(6, 76, 102, 0.8);
+  backdrop-filter: blur(10px); */
+  background-color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -100,10 +106,16 @@ header .user-name {
   margin-top: -4rem;
 }
 
-.swiper-slide .custom-btn {
+.custom-btn {
   font-family: 'Montserrat', sans-serif;
   font-size: 1.1rem;
   padding: .9rem 1.4rem;
+  border: 0;
+}
+
+.custom-btn.btn-outline {
+  border: 1px solid var(--light-color);
+  background-color: #fff;
 }
 
 .swiper-slide .rating {
@@ -113,6 +125,10 @@ header .user-name {
 
 .swiper-slide .rating svg {
   margin-right: 5px;
+}
+
+footer {
+  background-color: #eee;
 }
 
 /* Modal */
