@@ -23,9 +23,13 @@ body {
 }
 
 .intro {
-  /* background-color:  rgba(6, 76, 102, 0.8);
-  backdrop-filter: blur(10px); */
   background-color: #fff;
+  animation-name: fadeOut;
+  animation-delay: 2s;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  pointer-events: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -40,6 +44,7 @@ h1 {
   line-height: 1.3;
 }
 
+/* Theme colors */
 .color-secodary {
   color: var(--secondary-color);
 }
@@ -73,14 +78,6 @@ header .user-name {
   margin-top: -2rem;
 }
 
-.inactive {
-  opacity: .5;
-  /* pointer-events: none; */
-}
-/* .btn-check {
-  position: relative;
- } */
-
  .swiper {
   width: 100%;
   overflow: visible;
@@ -89,9 +86,6 @@ header .user-name {
 .swiper-slide {
   width: 80%;
   margin-right: 30px;
-}
-
-.swiper-slide {
   background-color: var(--primary-color);
   color: #fff;
   text-align: left;
@@ -131,13 +125,50 @@ footer {
   background-color: #eee;
 }
 
+/* Disabled State */
+.custom-btn.disabled {
+  background-color: var(--primary-color);
+  color: #fff !important;
+  border: 1px solid #eee;
+  opacity: .3;
+  /* pointer-events: none; */
+}
+
+/* .swiper-slide.disabled {
+  background-color: #e3e3e3;
+}
+
+.swiper.disabled .rating svg {
+  fill: var(--primary-color);
+}
+
+.disabled h2, .disabled h4 {
+  color: #000;
+} */
+
 /* Modal */
 .modal-dialog {
   margin: 0;
+  overflow-x: hidden;
+}
+
+.slideInUp {
   animation-name: slideInUp;
   animation-duration: .5s;
   animation-fill-mode: both;
   animation-iteration-count: 1;
+}
+
+.slideOutDown {
+  animation-name: slideOutDown;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
+}
+
+/* Animations */
+@keyframes fadeOut {
+  to { opacity: 0; }
 }
 
 @keyframes float {
@@ -177,7 +208,24 @@ footer {
   }
 }
 
+@keyframes slideOutDown {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    -webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
 @media only screen and (min-width: 600px) {
+  html, body {
+    overflow: hidden;
+  }
+
   .mobile-hide {
     display: flex !important;
     background-color: #212529;
