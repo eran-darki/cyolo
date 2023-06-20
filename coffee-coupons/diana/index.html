@@ -260,13 +260,13 @@
             toastMessage.classList.add('slideInUp');
             setTimeout(function () {
               toastMessage.classList.add('slideOutDown');
-            }, 3000);
+            }, 4000);
             // Reset Toast Message
             setTimeout(function () {
               toastMessage.classList.add('d-none');
               toastMessage.classList.remove('slideInUp');
               toastMessage.classList.remove('slideOutDown');
-            }, 4000);
+            }, 5000);
 
             // Persist state
             localStorage.BTNstate = JSON.stringify(btnstate);              
