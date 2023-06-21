@@ -79,6 +79,7 @@ header .user-name {
   margin-top: -2rem;
 }
 
+/* Read more button text */
 [aria-expanded="false"] > .expanded,
 [aria-expanded="true"] > .collapsed {
   display: none;
