@@ -63,7 +63,7 @@ header {
 }
 
 header .logos {
-  background: rgba(6, 76, 102, 0.9);
+  background: rgba(6, 76, 102, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
