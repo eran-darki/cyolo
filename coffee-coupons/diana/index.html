@@ -33,7 +33,7 @@
       <img src="../img/coffee-cup-shadow.png" class="cup-img-shadow img-fluid" alt="">
     </div>
     <h5 class="user-name color-secodary mb-2">Hi, Diana</h5>
-    <h1>Enjoy Original Coffee With Friends at ILAN'S</h1>
+    <h1>Enjoy Original Coffee with Friends at ILAN'S</h1>
   </header>
 
   <div class="read-more text-secondary-emphasis px-4 pb-2 mb-5">
@@ -46,15 +46,6 @@
       <span class="expanded">Read less</span>
     </div>
   </div>
-
-  <!-- Intro -->
-  <section class="intro fadeOut fixed-top w-100 h-100 d-flex justify-content-center align-items-center">
-    <div class="logos d-flex justify-content-between align-items-center fixed-top p-4 mb-5">
-      <img src="../img/cyolo-logo-black.svg" height="30" alt="">
-      <img src="../img/ilans-logo-black.svg" height="23" alt="">
-    </div>
-    <img src="../img/intro-animation.gif" alt="" class="img-fluid">
-  </section>
 
   <!-- Slider -->
   <div class="swiper ps-4 pb-5">
@@ -192,6 +183,36 @@
     Coupon applied! Enjoy coffee for two.
   </section>
 
+  <!-- Closure Prompt -->
+  <div id="closure" class="d-none fadeIn fixed-top w-100 h-100 d-flex justify-content-center align-items-center p-4">
+    <div class="logos d-flex justify-content-between align-items-center fixed-top p-4 mb-5">
+      <img src="../img/cyolo-logo.svg" height="30" alt="">
+      <img src="../img/ilans-logo.svg" height="23" alt="">
+    </div>
+
+    <div class="card position-relative slideInUp border-0 p-5">
+      <div class="closure-card-icon position-absolute top-0 d-flex justify-content-center align-items-center rounded-circle">
+        <img src="../img/clap-icon.svg" alt="">
+      </div>
+      <h1 class="mb-3 pt-2">
+        <div class="color-secodary">Nicely Done!</div>
+        All Coupons Have Been Applied
+      </h1>
+      <p>
+        We hope you enjoyed your association with others and hopefully got the chance to get to know a few colleagues just a bit better.
+      </p>
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="intro fadeOut fixed-top w-100 h-100 d-flex justify-content-center align-items-center">
+    <div class="logos d-flex justify-content-between align-items-center fixed-top p-4 mb-5">
+      <img src="../img/cyolo-logo-black.svg" height="30" alt="">
+      <img src="../img/ilans-logo-black.svg" height="23" alt="">
+    </div>
+    <img src="../img/intro-animation.gif" alt="" class="img-fluid">
+  </section>
+
   <!-- Show on mobile only -->
   <div class="mobile-hide d-none w-100 h-100 fixed-top justify-content-center align-items-center">
     <div class="card position-relative text-bg-dark text-center p-5">
@@ -221,7 +242,7 @@
   });
 
   // Lock device orientation
-  // var deviceScreenOrientation = window.screen.orientation;
+  // let deviceScreenOrientation = window.screen.orientation;
   // deviceScreenOrientation.lock("portrait");
 </script>
 
@@ -230,7 +251,7 @@
   // Avoid scoping issues by encapsulating code inside anonymous function
   (function() {
     // variable to store our current state
-    var btnstate;
+    let btnstate;
 
     // bind to the onload event
     window.addEventListener('load', function() {
@@ -240,26 +261,36 @@
     
       // Loop through state array and restore checked 
       // state for matching elements
-      for(var i in btnstate) {
-        var el = document.querySelector('button[id="' + i + '"]');
+      for(let i in btnstate) {
+        let el = document.querySelector('button[id="' + i + '"]');
         if (el) {
           el.id = true;
           el.classList.add('disabled');
         }
       }
-    
+      
       // Get all checkboxes that you want to monitor state for
-      var btn = document.getElementsByClassName('save-btn-state');
+      let btn = document.getElementsByClassName('save-btn-state');
     
       // Loop through results and ...
-      for(var i = 0; i < btn.length; i++) {
+      for(let i = 0; i < btn.length; i++) {
+
+        // When all buttons have disabled class
+        // If the amount of buttons matches the amount of disabled buttons...
+        let allBtnsClicked = function() {
+          if (btn.length === document.querySelectorAll(".custom-btn.disabled").length) {
+            document.getElementById('closure').classList.remove('d-none');
+          }
+        }
+
+        allBtnsClicked();
     
         //bind click event handler
         btn[i].addEventListener('click', function(evt) {
           // If checkbox is checked then save to state
           clickedButton = this;
-          var toastMessage = document.querySelector('.toast-message');
-
+          let toastMessage = document.querySelector('.toast-message');
+          
           // Click approve button
           document.querySelector('.approved-btn').addEventListener('click', function() {
             btnstate[clickedButton.id] = true;
@@ -278,6 +309,11 @@
               toastMessage.classList.remove('slideOutDown');
             }, 5000);
 
+            // Open Closure Prompt
+            setTimeout(function () {
+              allBtnsClicked();
+            }, 1000);
+            
             // Persist state
             localStorage.BTNstate = JSON.stringify(btnstate);              
           });

@@ -155,10 +155,35 @@ footer {
   color: #000;
 } */
 
+/* Closure */
+#closure {
+  opacity: 0;
+  background-color: rgba(0, 0, 0, .6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.closure-card-icon {
+  background-color: var(--secondary-color);
+  right: 0;
+  left: 0;
+  margin: auto;
+  margin-top: -40px;
+  width: 80px;
+  height: 80px;
+}
+
 /* Modal */
 .modal-dialog {
   margin: 0;
   overflow-x: hidden;
+}
+
+.fadeIn {
+  animation-name: fadeIn;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-iteration-count: 1;
 }
 
 .slideInUp {
@@ -176,6 +201,10 @@ footer {
 }
 
 /* Animations */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
 @keyframes fadeOut {
   to { opacity: 0; }
 }
