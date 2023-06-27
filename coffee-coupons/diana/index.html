@@ -241,6 +241,7 @@
     slidesPerView: "auto",
   });
 
+  // Clear gif cache on every load
   window.addEventListener('load', function() {
     const gifImage = new Image();
     gifImage.src = "../img/intro-animation.gif";
