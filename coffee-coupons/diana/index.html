@@ -210,7 +210,7 @@
       <img src="../img/cyolo-logo-black.svg" height="30" alt="">
       <img src="../img/ilans-logo-black.svg" height="23" alt="">
     </div>
-    <img src="../img/intro-animation.gif" alt="" class="img-fluid">
+    <img src="../img/intro-animation.gif" alt="" class="intro-animation img-fluid">
   </section>
 
   <!-- Show on mobile only -->
@@ -239,6 +239,13 @@
   // Initialize Swiper
   const swiper = new Swiper('.swiper', {
     slidesPerView: "auto",
+  });
+
+  window.addEventListener('load', function() {
+    const gifImage = new Image();
+    gifImage.src = "../img/intro-animation.gif";
+
+    document.querySelector('.intro-animation').src = gifImage.src;
   });
 
   // Lock device orientation
