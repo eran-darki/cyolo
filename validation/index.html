@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation Example</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    body {
+      padding: 25px;
+      margin: 0;
+      font-family: sans-serif;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      gap: 16px;
+      align-items: start;
+    }
+    input, select {
+      padding: 8px;
+      border-radius: 4px;
+      width: 200px;
+      outline: 1px solid #eff2f6;
+      background-color: #eff2f6;
+      border: 0;
+    }
+    select {
+     background-color: white;
+     outline: 1px solid #dee2e6;
+     color: gray;
+    }
+    input:focus {
+      outline: 1px solid blue;
+    }
+    /* Mandatory field */
+    #mandatory.error:focus {
+      outline: 1px solid red;
+    }
+    .error {
+      outline: 1px solid red;
+    }
+
+    .element-title {
+      margin-bottom: 8px;
+    }
+    span, #validation {
+      color: red;
+    }
+    .d-none {
+      display: none;
+    }
+    button {
+      margin-left: auto;
+      background-color: #ff6645;
+      border: 0;
+      color: white;
+      padding: 6px 24px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    ul {
+      padding-left: 18px;
+    }
+    ul li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Mandatory Fields and Validation Example</h2>
+  <p>The validation will trigger when either of the following conditions take place:</p>
+  <ul>
+    <li><strong>Focus out</strong> from any feild that required validation.</li>
+    <li><strong>Clicking</strong> the CTA button (Create).</li>
+    <li><strong>Pressing Enter</strong> key when feild is focused.</li>
+  </ul>
+  <p>Try all of the above here as an example (in this case only the first field requires validation).</p>
+  <br>
+
+  <div class="container">
+    <div class="elemnt-wrapper">
+      <div class="element-title">Example<span>*</span></div>
+      <input type="text" id="mandatory" placeholder="Name" onfocusout="validation()">
+      <div id="validation" class="d-none"><small>Please enter a valid value.</small></div>
+    </div>
+    <div class="elemnt-wrapper">
+      <div class="element-title">Example</div>
+      <input type="text" placeholder="Example">
+    </div>
+    <div class="elemnt-wrapper">
+      <div class="element-title">Example</div>
+      <select>
+        <option value="Selection">Select</option>
+      </select>
+    </div>
+    <button onclick="validation()">Create</button>
+  </div>
+
+  <script>
+    const input = document.getElementById('mandatory');
+    
+    function validation() {
+      let validation = document.getElementById('validation');
+
+      validation.classList.remove('d-none');
+      input.classList.add('error');
+    }
+
+    // Enter key press
+    input.addEventListener('keypress', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        validation();
+      }
+    });
+  </script>
+
+</body>
+</html>
