@@ -22,6 +22,7 @@
       gap: 16px;
       align-items: start;
       padding-top: 1rem;
+      margin-bottom: 2rem;
     }
     input, select {
       padding: 8px;
@@ -57,13 +58,17 @@
       display: none;
     }
     button {
-      margin-left: auto;
       background-color: #ff6645;
       border: 0;
       color: white;
       padding: 6px 24px;
       border-radius: 4px;
       cursor: pointer;
+    }
+    button.disabled {
+      margin-left: auto;
+      cursor: not-allowed;
+      background-color: #d1d1d1;
     }
     ul {
       padding-left: 18px;
@@ -83,16 +88,19 @@
   <p>The validation will be triggered when either of the following conditions take place:</p>
   <ul>
     <li><strong>Focus out</strong> from any field that requires validation.</li>
-    <li><strong>Clicking</strong> the CTA button.</li>
+    <li><strong>Clicking</strong> the CTA button (e.g. card/step button such as Next/Save).</li>
     <li><strong>Pressing Enter</strong> key when field is focused.</li>
   </ul>
-  <p>Try all of the above here as an example (in this case only the first field requires validation). Refresh the page for each test.</p>
   <p>
-    <strong>Please notice:</strong> CTA button (Create/Save etc.) will stay active at all times, and should trigger the validation when necessary.
+    Try all of the above here as an example (in this case only the first field requires validation). Refresh the page for each test.
   </p>
   <br>
   <hr>
   <br>
+
+  <div class="container">
+    <button class="disabled">Create</button>
+  </div>
 
   <div class="container">
     <div class="elemnt-wrapper">
@@ -110,7 +118,10 @@
         <option value="Selection">Select</option>
       </select>
     </div>
-    <button onclick="validation()">Create</button>
+  </div>
+  <hr>
+  <div class="container">
+    <button onclick="validation()">Next</button>
   </div>
 
   <script>
