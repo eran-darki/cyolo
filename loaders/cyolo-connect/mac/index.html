@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mac</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      background-image: url('./mac-bg.png');
+      background-position-x: 100%;
+      background-repeat: no-repeat;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      cursor: default;
+    }
+    .position {
+      display: flex;
+    }
+    .position svg {
+      margin-left: auto;
+      transform: translateX(-620px) scale(0.8);
+    }
+    .modal-wrapper {
+      display: flex;
+    }
+    .modal {
+      display: none;
+      background-color: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+      border-radius: 6px;
+      margin-left: auto;
+      padding: 10px;
+      line-height: 1.3;
+      transform: translate(-425px, 2px);
+    }
+    .modal > hr {
+      border: 0;
+      border-top: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    .modal > div:not(:first-child) {
+      opacity: .5;
+      cursor: not-allowed;
+    }
+    .show {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="position">
+    <svg onclick="toggleMenu()" class="btn" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15.2804 14.2987L16.9795 12.8596C17.0749 12.7773 17.0835 12.6386 17.0055 12.5432C16.9968 12.5345 16.9882 12.5215 16.9795 12.5172L15.3324 11.1432C15.2501 11.0738 15.1287 11.0738 15.0463 11.1432L13.4643 12.4565C13.798 13.2974 13.9844 14.2076 13.9844 15.1655C13.9844 15.1872 13.9844 15.2089 13.9844 15.2306C14.4482 14.9748 14.8816 14.6584 15.2847 14.2943L15.2804 14.2987Z" fill="black"/>
+      <path d="M20.6464 11.4336C20.1957 10.9828 20.2 10.2546 20.6464 9.80383L21.639 8.97595C21.8341 8.81124 21.9208 8.55117 21.8644 8.29978C20.5858 2.5783 14.9076 -1.02363 9.18615 0.259369C4.27089 1.35599 0.920356 5.70344 0.890015 10.5364C1.68322 9.5611 2.71915 8.7939 3.90679 8.32145C4.89505 4.99692 7.97251 2.57397 11.6178 2.57397C14.7993 2.57397 17.6817 4.44645 18.969 7.35487C19.0557 7.53691 19.0037 7.75364 18.852 7.88367L17.816 8.75489C17.7337 8.82424 17.6167 8.82424 17.53 8.75489L15.029 6.69169C12.8618 4.75419 9.52858 4.94058 7.59108 7.1078C7.39169 7.33319 7.21831 7.57159 7.06227 7.81865C8.04186 7.875 8.9651 8.12206 9.80598 8.5295C10.3608 8.07872 11.0933 7.84466 11.8605 7.94435C12.2203 7.99203 12.5627 8.10906 12.8748 8.29544C12.9138 8.32145 13.0525 8.42981 13.0958 8.46015L18.8997 13.2454C19.0514 13.3711 19.1034 13.5791 19.0297 13.7568C17.9764 16.2405 15.7658 17.9959 13.1825 18.5074C12.6277 19.591 11.8215 20.5186 10.8289 21.2121C11.8128 21.2728 12.8184 21.2034 13.8284 20.978C17.8421 20.0808 20.9759 16.947 21.8731 12.9333C21.9294 12.6862 21.8428 12.4262 21.6477 12.2658L20.6551 11.4292L20.6464 11.4336Z" fill="black"/>
+      <path d="M10.6475 15.2492C10.6475 17.3813 8.91911 19.1097 6.78699 19.1097C4.65487 19.1097 2.92644 17.3813 2.92644 15.2492C2.92644 13.117 4.65487 11.3886 6.78699 11.3886" stroke="#0D6EFD" stroke-width="3">
+        <animateTransform
+          attributeName="transform"
+          attributeType="XML"
+          type="rotate"
+          from="0 6.78699 15.2492"
+          to="360 6.78699 15.2492"
+          dur="0.75s"
+          repeatCount="indefinite" />
+      </path>
+    </svg>
+      
+  </div>
+
+  <div class="modal-wrapper">
+    <div class="modal" id="menu">
+      <div>System Update...</div>
+      <hr>
+      <div>User Information</div>
+      <hr>
+      <div>Multi-Factor Authentication: True</div>
+      <div>Available Networks</div>
+      <hr>
+      <div>System Information</div>
+      <div>Client Version: 5.0</div>
+      <hr>
+      <div>Sign Out</div>
+      <hr>
+      <div>Exit</div>
+    </div>
+  </div>
+</body>
+<script>
+    const menu = document.getElementById('menu');
+
+    const toggleMenu = () => menu.classList.toggle('show');
+
+    window.onclick = (event) => {
+        if (!event.target.matches('.btn')) {
+            if(menu.classList.contains('show')){
+                menu.classList.remove('show')
+            }
+        }
+    }
+
+    menu.addEventListener('click', (event) => event.stopPropagation());
+</script>
+</html>
