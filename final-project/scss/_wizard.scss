@@ -1,0 +1,33 @@
+.wizard {
+  .wizard-number {
+      width: 2rem;
+      height: 2rem;
+      background-color: $color-primary;
+      color: #fff;
+      &.inactive {
+        background-color: transparent;
+        color: inherit;
+      }
+    }
+
+  .wizard-main {
+    min-height: 612px;
+    .search {
+      max-width: 200px;
+    }
+  }
+
+  .integration-hr {
+    .card {
+      .icon {
+        width: 50px;
+      }
+      .badge {
+        background-color: #eeffe4;
+        font-weight: normal;
+        font-size: 0.9rem;
+        padding: 0.3rem 0.6rem;
+      }
+    }
+  }
+}

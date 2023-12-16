@@ -1,0 +1,81 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-variant-ligatures: none;
+  cursor: default;
+  background-image: url('../img/bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+$color-primary: #0d6efd;
+
+*:disabled {
+  cursor: not-allowed !important;
+  pointer-events: inherit !important;
+}
+
+@media (min-width: 1400px) {
+  .wizard {
+    .container {
+        max-width: 720px;
+    }
+  }
+}
+
+strong {
+  font-weight: 600;
+}
+
+html[data-bs-theme="dark"] {
+  .notification-icon {
+    fill: currentColor;
+  }
+}
+
+.avatar {
+  position: relative;
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  img {
+    display: block;
+    object-fit: cover;
+  }
+  img, .avatar-name {
+    width: 100%;
+    height: 100%;
+  }
+  .avatar-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.6666666667rem;
+  }
+}
+
+.fs-xs {
+  font-size: 0.8rem;
+}
+
+.fw-m {
+  font-weight: 500;
+}
+
+.modal-preview {
+  --bs-modal-width: 400px;
+}
+
+.form-check-input:checked[type=radio] + .form-check-label {
+  background-color: var(--bs-tertiary-bg);
+  --bs-border-opacity: 1;
+  border-color: rgba(var(--bs-primary-rgb),var(--bs-border-opacity))!important;
+}

@@ -1,0 +1,25 @@
+nav {
+  .navbar-brand {
+    width: 32px;
+    height: 32px;
+  }
+  .actions {
+    .bi {
+      vertical-align: -0.125em;
+      fill: currentColor;
+    }
+  }
+}
+
+.nav-underline {
+  gap: 0;
+}
+.nav-underline {
+  .nav-link.active, .show>.nav-link {
+    color: $color-primary;
+    font-weight: 600;
+  }
+}
+.nav-link {
+  color: var(--bs-secondary-color);
+}
