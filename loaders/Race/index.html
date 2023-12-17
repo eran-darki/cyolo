@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo&display=swap" rel="stylesheet">
+  <title>Race</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eff2f6;
+    }
+
+    .loader-wrapper {
+      --ui-color: #000850;
+
+      padding: 2.5rem;
+      border-radius: 0.75rem;
+      background-color: #fff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+
+    .loader-status {
+      font-family: 'Heebo', sans-serif;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+      color: var(--ui-color);
+    }
+
+    .race-by {
+      --ui-size: 80px;
+      --ui-speed: 1.4s;
+      --ui-line-weight: 5px;
+
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: var(--ui-line-weight);
+      width: var(--ui-size);
+      border-radius: calc(var(--ui-line-weight) / 2);
+      overflow: hidden;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .race-by::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--ui-color);
+      opacity: 0.1;
+    }
+
+    .race-by::after {
+      content: '';
+      height: 100%;
+      width: 100%;
+      border-radius: calc(var(--ui-line-weight) / 2);
+      animation: raceBy var(--ui-speed) ease-in-out infinite;
+      transform: translateX(-100%);
+      background-color: var(--ui-color);
+    }
+
+    @keyframes raceBy {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(100%);
+      }
+    }
+  </style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Eran Darki</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Eran Darki</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ContentTypeId msdt:dt="string">0x010100A9121777DE24214A963B0F5EF38C8DA2</mso:ContentTypeId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+<mso:MediaLengthInSeconds msdt:dt="string"></mso:MediaLengthInSeconds>
+<mso:TaxCatchAll msdt:dt="string"></mso:TaxCatchAll>
+<mso:MediaServiceImageTags msdt:dt="string"></mso:MediaServiceImageTags>
+<mso:lcf76f155ced4ddcb4097134ff3c332f msdt:dt="string"></mso:lcf76f155ced4ddcb4097134ff3c332f>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+  <div class="loader-wrapper">
+    <!-- <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" width="30" height="30.34" viewBox="0 0 30 30.34"><defs><style>.cls-1{fill:#0577b6;}</style></defs><path id="Path_4060" class="cls-1" d="M28.23,16.33c-.64-.64-.64-1.69,0-2.33l1.42-1.18c.28-.24,.4-.61,.32-.96C28.15,3.69,20.04-1.46,11.86,.37,3.69,2.2-1.46,10.31,.37,18.48c1.83,8.18,9.94,13.32,18.11,11.49,5.73-1.28,10.21-5.76,11.49-11.49,.08-.35-.04-.72-.32-.96l-1.42-1.19Zm-12.91,10.34c-6.35,0-11.5-5.15-11.49-11.5,0-6.35,5.15-11.5,11.5-11.49,4.54,0,8.66,2.68,10.51,6.83,.12,.26,.05,.57-.17,.76l-1.48,1.24c-.12,.1-.29,.1-.41,0l-3.58-2.95c-3.1-2.77-7.86-2.5-10.63,.59-2.77,3.1-2.5,7.86,.59,10.63,1.38,1.23,3.17,1.92,5.02,1.92,2.11,0,3.89-.93,5.38-2.27l2.43-2.05c.13-.12,.15-.32,.04-.45-.01-.01-.02-.03-.04-.04l-2.35-1.96c-.12-.1-.29-.1-.41,0l-3.05,2.53h0c-.75,.47-1.64,.66-2.52,.54-2.11-.28-3.6-2.21-3.32-4.32s2.21-3.6,4.32-3.32h0c.51,.07,1.01,.24,1.45,.5h0c.06,.04,.25,.19,.31,.24h0l8.29,6.83c.22,.18,.29,.47,.19,.73-1.8,4.25-5.97,7.01-10.59,7.01Z"/></svg> -->
+    <div class="loader-status">LOADING...</div>
+    <div class="race-by"></div>
+  </div>
+</body>
+</html>

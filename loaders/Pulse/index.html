@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pulse</title>
+  <style>
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    html, body {
+      margin: 0;
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eff2f6;
+    }
+
+    /* .loader-wrapper {
+      padding: 2.5rem;
+      border-radius: 0.75rem;
+      background-color: #fff;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    } */
+
+    .dot-pulse {
+      --ui-size: 50px;
+      --ui-speed: 1.3s;
+      --ui-color: #000850;
+
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: var(--ui-size);
+      height: calc(var(--ui-size) * 0.27);
+    }
+
+    .dot-pulse__dot,
+    .dot-pulse::before,
+    .dot-pulse::after {
+      content: '';
+      display: block;
+      height: calc(var(--ui-size) * 0.18);
+      width: calc(var(--ui-size) * 0.18);
+      border-radius: 50%;
+      background-color: var(--ui-color);
+      transform: scale(0);
+    }
+
+    .dot-pulse::before {
+      animation: pulse var(--ui-speed) ease-in-out infinite;
+    }
+
+    .dot-pulse__dot {
+      animation: pulse var(--ui-speed) ease-in-out
+        calc(var(--ui-speed) * 0.125) infinite both;
+    }
+
+    .dot-pulse::after {
+      animation: pulse var(--ui-speed) ease-in-out
+        calc(var(--ui-speed) * 0.25) infinite;
+    }
+
+    @keyframes pulse {
+      0%,
+      100% {
+        transform: scale(0);
+      }
+
+      50% {
+        transform: scale(1.5);
+      }
+    }
+  </style>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:xd_Signature msdt:dt="string"></mso:xd_Signature>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Eran Darki</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:xd_ProgID msdt:dt="string"></mso:xd_ProgID>
+<mso:_ExtendedDescription msdt:dt="string"></mso:_ExtendedDescription>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Eran Darki</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+<mso:ComplianceAssetId msdt:dt="string"></mso:ComplianceAssetId>
+<mso:TemplateUrl msdt:dt="string"></mso:TemplateUrl>
+<mso:ContentTypeId msdt:dt="string">0x010100A9121777DE24214A963B0F5EF38C8DA2</mso:ContentTypeId>
+<mso:TriggerFlowInfo msdt:dt="string"></mso:TriggerFlowInfo>
+<mso:_SourceUrl msdt:dt="string"></mso:_SourceUrl>
+<mso:_SharedFileIndex msdt:dt="string"></mso:_SharedFileIndex>
+<mso:MediaLengthInSeconds msdt:dt="string"></mso:MediaLengthInSeconds>
+<mso:TaxCatchAll msdt:dt="string"></mso:TaxCatchAll>
+<mso:MediaServiceImageTags msdt:dt="string"></mso:MediaServiceImageTags>
+<mso:lcf76f155ced4ddcb4097134ff3c332f msdt:dt="string"></mso:lcf76f155ced4ddcb4097134ff3c332f>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+  <div class="loader-wrapper">
+    <div class="dot-pulse">
+      <div class="dot-pulse__dot"></div>
+    </div>
+  </div>
+</body>
+</html>

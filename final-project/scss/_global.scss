@@ -6,6 +6,78 @@ html {
   box-sizing: inherit;
 }
 
+.loader {
+  background-color: rgba(0, 0, 0, 0.48);
+  backdrop-filter: blur(0.75rem);
+  transition: opacity .3s ease-out;
+}
+
+.loader:not(.show) {
+  opacity: 0;
+}
+
+.loader-wrapper {
+  --ui-color: #0D6EFD;
+
+  padding: 2.5rem;
+  border-radius: 0.75rem;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.loader-status {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.race-by {
+  --ui-size: 80px;
+  --ui-speed: 1.4s;
+  --ui-line-weight: 5px;
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--ui-line-weight);
+  width: var(--ui-size);
+  border-radius: calc(var(--ui-line-weight) / 2);
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.race-by::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: var(--ui-color);
+  opacity: 0.1;
+}
+
+.race-by::after {
+  content: '';
+  height: 100%;
+  width: 100%;
+  border-radius: calc(var(--ui-line-weight) / 2);
+  animation: raceBy var(--ui-speed) ease-in-out infinite;
+  transform: translateX(-100%);
+  background-color: var(--ui-color);
+}
+
+@keyframes raceBy {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
 body {
   font-family: 'Inter', sans-serif;
   font-variant-ligatures: none;
