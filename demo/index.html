@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Image Click Counter</h2>
+
+<div id="imageContainer">
+  <!-- Add your images here -->
+  <img src="image1.jpg" id="image1" onclick="incrementCounter('image1')">
+  <img src="image2.jpg" id="image2" onclick="incrementCounter('image2')">
+  <!-- More images... -->
+</div>
+
+<button onclick="saveCounters()">Save Counters</button>
+
+<script>
+// Initialize an empty object to store the counters
+let counters = {};
+
+function incrementCounter(imageId) {
+  // If the imageId doesn't exist in the counters object, add it with a count of 0
+  if (!counters[imageId]) {
+    counters[imageId] = 0;
+  }
+
+  // Increment the counter for the clicked image
+  counters[imageId]++;
+}
+
+function saveCounters() {
+  // Send a POST request to the server with the counter data
+  fetch('http://localhost:3000/save', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(counters)
+  })
+  .then(response => response.text())
+  .then(data => console.log(data))
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+}
+</script>
+
+</body>
+</html>
