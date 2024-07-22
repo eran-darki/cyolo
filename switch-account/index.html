@@ -84,7 +84,9 @@
             padding: 0;
             max-height: 324px;
             overflow-y: auto;
+            overflow-x: hidden;
             padding-right: 16px;
+            transform: translateX(8px);
         }
 
         main .account-item {
@@ -102,7 +104,7 @@
             height: 24px;
             margin-left: auto;
             cursor: pointer;
-            background-image: url('/static/trash-icon.svg');
+            background-image: url('./static/trash-icon.svg');
             background-repeat: no-repeat;
             background-position: center;
             background-color: #fff;
@@ -135,7 +137,7 @@
         }
         
         main .account-item .trash-icon:hover {
-            background-image: url('/static/trash-icon-hover.svg');
+            background-image: url('./static/trash-icon-hover.svg');
             background-color: var(--cyolo-error-color);
         }
 
@@ -296,12 +298,12 @@
 </head>
 <body>
     <header>
-        <img src="/static/logo.svg" alt="">
+        <img src="./static/logo.svg" alt="">
     </header>
 
     <main>
         <div class="container">
-            <img src="/static/manage-accounts-icon.svg" alt="">
+            <img src="./static/manage-accounts-icon.svg" alt="">
             <h2>Manage Accounts</h2>
             <p>Add or remove accounts</p>
             <ul id="account-list" class="account-list"></ul>
@@ -310,13 +312,13 @@
     </main>
 
     <footer>
-        Powered by <img src="/static/logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
+        Powered by <img src="./static/logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
     </footer>
 
     <!-- Add Account Modal -->
     <div class="modal" id="modal">
         <div class="modal-content">
-            <img src="/static/manage-accounts-icon.svg" alt="">
+            <img src="./static/manage-accounts-icon.svg" alt="">
             <h2>Add Account</h2>
             <p>Enter account domain name to continue</p>
             <input type="text" id="account-name-input" placeholder="domain-name.example.com">
@@ -333,7 +335,7 @@
             <div class="top-bar">
                 Remove Account
                 <span class="close-modal-btn">
-                    <img src="/static/close-icon.svg" alt="">
+                    <img src="./static/close-icon.svg" alt="">
                 </span>
             </div>
             <div class="main-text">You are about to remove {domain-name@address.com}</div>
@@ -378,7 +380,7 @@
                     accountActions.classList.add('account-actions');
 
                     const accountIcon = document.createElement('img');
-                    accountIcon.src = isSelected ? '/static/selected-account-icon.svg' : '/static/account-icon.svg';
+                    accountIcon.src = isSelected ? './static/selected-account-icon.svg' : './static/account-icon.svg';
                     accountIcon.alt = 'Check';
                     accountIcon.className = 'account-icon'
 
