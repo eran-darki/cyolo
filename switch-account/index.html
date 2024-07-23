@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./static/favicon.ico" type="image/x-icon">
     <title>Manage Accounts</title>
     <style>
         @font-face {
@@ -200,6 +201,11 @@
             border-color: #123be5;
         }
 
+        .modal-content .cta-wrapper {
+            width: 200px;
+            margin: auto;
+        }
+
         .account-error-message {
             display: none;
             color: var(--cyolo-error-color);
@@ -208,7 +214,7 @@
         }
 
         .modal-content button {
-            width: 200px;
+            width: 100%;
             margin-top: 8px;
         }
 
@@ -217,6 +223,7 @@
         }
 
         .cancel-link {
+            display: inline-block;
             color: #123be5;
             cursor: pointer;
             margin-top: 8px;
@@ -326,11 +333,13 @@
             <img src="./static/manage-accounts-icon.svg" alt="">
             <h2>Add Account</h2>
             <p>Enter account domain name to continue</p>
-            <input type="text" id="account-name-input" placeholder="domain-name.example.com">
-            <div class="account-error-message">Domain name is not valid</div>
-            <div class="account-error-message">Domain name already exists.</div>
-            <button id="next-btn" disabled>Next</button>
-            <div class="cancel-link close-modal-btn">Cancel</div>
+            <div class="cta-wrapper">
+                <input type="text" id="account-name-input" placeholder="domain-name.example.com">
+                <div class="account-error-message">Domain name is not valid</div>
+                <div class="account-error-message">Domain name already exists.</div>
+                <button id="next-btn" disabled>Add</button>
+                <div class="cancel-link close-modal-btn">Cancel</div>
+            </div>
         </div>
     </div>
 
