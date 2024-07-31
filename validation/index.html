@@ -4,9 +4,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>✅</text></svg>">
   <title>Validation Example</title>
+  <style>
+    :root {
+      --orange: #FF6645;
+    }
+    .container {
+      max-width: 1110px;
+    }
+    .btn, .btn:hover, .btn:focus, .btn:focus-visible, .btn:active, .btn:first-child:active {
+      color: #fff;
+      background-color: var(--orange);
+      padding: 2px 24px;
+    }
+    .form-control:focus {
+      box-shadow: none;
+    }
+  </style>
 </head>
 <body>
   <div class="container p-5">
@@ -18,16 +33,19 @@
     <main class="my-5">
       <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="button-click-tab" data-bs-toggle="pill" data-bs-target="#button-click" type="button" role="tab" aria-controls="button-click" aria-selected="true" onclick="removeValidation()">Button Click</button>
+          <button class="nav-link active show" id="button-click-tab" data-bs-toggle="tab" data-bs-target="#button-click" type="button" role="tab" aria-controls="button-click" aria-selected="true" onclick="removeValidation()">Button Click</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="focus-out-tab" data-bs-toggle="pill" data-bs-target="#focus-out" type="button" role="tab" aria-controls="focus-out" aria-selected="false" onclick="removeValidation(); inputFocus()">Focus Out</button>
+          <button class="nav-link" id="focus-out-tab" data-bs-toggle="tab" data-bs-target="#focus-out" type="button" role="tab" aria-controls="focus-out" aria-selected="false" onclick="removeValidation(); inputFocus()">Focus Out</button>
         </li>
         <li class="nav-item" role="presentation">
-          <button class="nav-link" id="enter-key-tab" data-bs-toggle="pill" data-bs-target="#enter-key" type="button" role="tab" aria-controls="enter-key" aria-selected="false" onclick="removeValidation(); inputFocus()">Enter Key</button>
+          <button class="nav-link" id="enter-key-tab" data-bs-toggle="tab" data-bs-target="#enter-key" type="button" role="tab" aria-controls="enter-key" aria-selected="false" onclick="removeValidation(); inputFocus()">Enter Key</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="exit-edit-tab" data-bs-toggle="tab" data-bs-target="#exit-edit" type="button" role="tab" aria-controls="exit-edit" aria-selected="false" onclick="removeValidation(); inputFocus()">Exit Edit</button>
         </li>
       </ul>
-  
+      <!-- Content -->
       <div class="tab-content mt-4">
          <!-- Tab 1 -->
           <div class="tab-pane show active" id="button-click" role="tabpanel" aria-labelledby="button-click-tab" tabindex="0">
@@ -112,7 +130,7 @@
             </div>
            </div>
           <!-- Tab 3 -->
-           <div class="tab-pane" id="enter-key" role="tabpanel" aria-labelledby="focus-out-tab" tabindex="0">
+           <div class="tab-pane" id="enter-key" role="tabpanel" aria-labelledby="enter-key-tab" tabindex="0">
             <h4 class="mb-4">Press the Enter key when the mandatory field is focused</h4>
             <div class="d-flex flex-row-reverse mb-3">
               <button type="button" class="btn">Save</button>
@@ -133,6 +151,36 @@
                   <div class="col-md">
                     <label class="form-label">Example</label>
                     <input type="text" class="form-control" placeholder="Example">
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer bg-body py-3">
+                <button type="button" class="btn">Next</button>
+              </div>
+            </div>
+           </div>
+          <!-- Tab 4 -->
+           <div class="tab-pane" id="exit-edit" role="tabpanel" aria-labelledby="exit-edit-tab" tabindex="0">
+            <h4 class="mb-4">Leave the edited page without saving (change tab)</h4>
+            <div class="d-flex flex-row-reverse mb-3">
+              <button type="button" class="btn">Save</button>
+            </div>
+            <div class="card">
+              <div class="card-header fs-5 bg-body">Example 4</div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md">
+                    <label class="form-label">Name<span class="text-danger">*</span></label>
+                    <input type="text" class="form-control mandatory" placeholder="Name" value="Edited">
+                    <div class="text-danger d-none"><small>This field is required.</small></div>
+                  </div>
+                  <div class="col-md">
+                    <label class="form-label">Description</label>
+                    <input type="text" class="form-control" placeholder="Description" value="Edited">
+                  </div>
+                  <div class="col-md">
+                    <label class="form-label">Example</label>
+                    <input type="text" class="form-control" placeholder="Example" value="Edited">
                   </div>
                 </div>
               </div>
@@ -175,5 +223,15 @@
   function showStep2() {
     step2card.classList.remove('d-none');
   }
+  
+  // Confirmation before navigation
+  const exitEditTab = document.getElementById('exit-edit-tab');
+  exitEditTab.addEventListener('hide.bs.tab', event => {
+    const text = 'You have unsaved changes.\nAre you sure you want to leave the page?';
+    if (confirm(text) == false) {
+      event.preventDefault();
+      bootstrap.Tab.getInstance(event.target).show();
+    }
+  });
 </script>
 </html>
