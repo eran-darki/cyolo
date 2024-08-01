@@ -231,7 +231,18 @@
     if (confirm(text) == false) {
       event.preventDefault();
       bootstrap.Tab.getInstance(event.target).show();
+    } else {
+      window.removeEventListener('beforeunload', beforeUnloadHandler);
     }
   });
+  // Confirmation before closing window
+  exitEditTab.addEventListener('focus', (event) => {
+    window.addEventListener('beforeunload', beforeUnloadHandler);
+  });
+  
+  const beforeUnloadHandler = (event) => {
+    event.preventDefault();
+    event.returnValue = true; // Included for legacy support, e.g. Chrome/Edge < 119
+  };
 </script>
 </html>
