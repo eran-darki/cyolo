@@ -4,72 +4,252 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cyolo Signature</title>
+  <link rel="icon" href="https://cyolo.io/img/favicon.svg">
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <!-- International Telephone Input CSS -->
+  <link rel="stylesheet" href="./css/intlTelInput.min.css">
+  <title>Cyolo Email Signature</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
+    @import url('https://fonts.googleapis.com/css?family=Calibri:400,700,400italic,700italic');
+    :root {
+      --brand-color: #007e7f;
+    }
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+    html, body {
+      height: 100%;
       cursor: default;
-      font-size: 14px;
-      color: #064C66;
     }
-    a, a:active {
-      color: #064C66;
-      text-decoration: none;
-      vertical-align: top;
+    body{
+      font-family: 'Montserrat', serif;
+      font-optical-sizing: auto;
+      font-style: normal;
     }
-    .signature-fullname {
-      font-size: 18px;
+    h1 {
       font-weight: 600;
+      letter-spacing: -.025em;
+    }
+    .card-header {
+      font-weight: 600;
+    }
+    .container {
+      max-width: 600px !important;
+    }
+    table > * {
+      line-height: normal;
+    }
+    #copySignature, input[type="checkbox"] {
+      cursor: pointer;
+    }
+    input:disabled {
+      color: var(--bs-secondary);
+      cursor: not-allowed;
+    }
+    .iti.disabled .iti__selected-country-primary, .input-group-text:has(input:disabled) {
+      background-color: var(--bs-secondary-bg);
+      cursor: not-allowed;
+    }
+    input {
+      text-overflow: ellipsis;
+    }
+    .form-control-color {
+      width: 22px;
+      height: 22px;
+    }
+    a {
+      text-decoration: none;
+    }
+    footer a {
+      color: var(--brand-color);
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .bi {
+      vertical-align: -0.125em;
+      fill: currentColor;
+    }
+    /* .custom-tooltip {
+      --bs-tooltip-max-width: 220px;
+    } */
+    .tooltip-inner {
+      text-align: left;
     }
   </style>
 </head>
-
-<body>
-  <table>
-    <tbody>
-      <tr>
-        <td class="signature-fullname">
-          Name Lastname
-        </td>
-      </tr>
-      <tr>
-        <td style="padding-bottom: 8px;">
-          Job Title
-        </td>
-      </tr>
-      <tr>
-        <td style="padding-bottom: 3px;">
-          <img src="./img/email-icon.png" alt="">&nbsp;&nbsp;&nbsp; <a href="mailto:name.lastname@cyolo.io">name.lastname@cyolo.io</a>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding-bottom: 3px;">
-          <img src="./img/phone-icon.png" alt="">&nbsp;&nbsp;&nbsp; <a href="tel:+1(123)4567891">+1(123)456-7891</a>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding-bottom: 3px;">
-          <img src="./img/web-icon.png" alt="">&nbsp;&nbsp;&nbsp; <a href="https://www.cyolo.io">cyolo.io</a>
-        </td>
-      </tr>
-      <tr>
-        <td style="padding-top: 8px;">
-          <a href="https://www.facebook.com/pages/category/Information-Technology-Company/Cyolo-104079641260872/"><img src="./img/facebook-icon.png" alt=""></a>
-          <a href="https://www.linkedin.com/authwall?trk=qf&originalReferer=&sessionRedirect=https%3A%2F%2Fil.linkedin.com%2Fcompany%2Fcyolo%2F"><img src="./img/linkedin-icon.png" alt=""></a>
-          <a href="https://twitter.com/Cyolo_Security?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"><img src="./img/twitter-icon.png" alt=""></a>
-          <a href="https://www.youtube.com/channel/UCdxVJiDvgECOR1bc1fV6erg"><img src="./img/youtube-icon.png" alt=""></a>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <a href="https://www.cyolo.io"><img src="./img/logo.png" width="90" alt=""></a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  
-  
+<body class="bg-body-tertiary d-flex flex-column">
+  <main class="container">
+    <h1 class="text-center mt-5">Cyolo Email Signature</h1>
+    <p class="text-center mb-5">Set up your info, then copy and paste the signature into your email</p>
+    <!-- Preview -->
+    <div class="card mb-3">
+      <div class="card-header d-flex align-items-center">
+        <span class="me-auto">Preview</span>
+        <span class="text-primary d-flex" data-bs-toggle="tooltip" data-bs-html="true" data-bs-title="<b>——— TIPS & TRICKS ———</b> <br> <b>Outlook:</b> To preserve formatting, click on the Paste Options button that appears next to the pasted text and hit Keep Source Formatting. Also, If underline appears after pasting, select all and press <u>U</u> button twice to cancel it.">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 14.39 18.22" fill="none" stroke="var(--brand-color)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M9.75,15.17c.27-1.79,1.16-2.62,2.1-3.51.27-.26.56-.53.83-.81.86-1.01,1.22-2.14,1.22-3.78,0-2.46-1.38-4.6-3.43-5.73-.97-.53-2.08-.84-3.27-.84C3.5.5.5,3.44.5,7.06c0,1.51.41,2.79,1.21,3.77.28.3.57.57.84.83.93.88,1.82,1.73,2.09,3.5"/><path d="M7.2,2.91c-2.48,0-4.5,1.98-4.5,4.41"/><path d="M7.2,17.72c1.41,0,2.55-1.14,2.55-2.55h-5.1c0,1.41,1.14,2.55,2.55,2.55Z"/></svg>
+        </span>
+        <span id="copySignature" class="text-primary d-flex ms-3" data-bs-toggle="tooltip" data-bs-title="Copy signature">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 14.33 17.67" fill="none" stroke="var(--brand-color)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5,2.17h1.67c.92,0,1.67.75,1.67,1.67v11.67c0,.92-.75,1.67-1.67,1.67H2.17c-.92,0-1.67-.75-1.67-1.67V3.83c0-.92.75-1.67,1.67-1.67h1.67"/><rect x="3.83" y=".5" width="6.67" height="3.33" rx=".83" ry=".83"/></svg>
+        </span>
+      </div>
+      <div class="card-body">
+        <table id="signatureOutput">
+          <tbody>
+            <tr>
+              <!-- INFO SECTION -->
+              <td style="font-family:Calibri,Arial,Helvetica,sans-serif;cursor:default;vertical-align:top;border:0;color:#005163">
+                <!-- FULL NAME -->
+                <p id="fullnameSignature" style="font-size:26px;font-weight:600;margin-bottom:0;">John Smith</p>
+                <!-- JOB TITLE -->
+                 <p style="margin-bottom:10px;"><span id="jobTitleSignature" style="font-size:17px;font-weight:600;">Product Manager</span></p>
+                <!-- EMAIL ADDRESS -->
+                <p id="emailSignature" style="margin-bottom:4px;vertical-align:middle;"><a href="mailto:#" target="_blank" style="text-decoration:none;color:#005163;font-size:17px;"><img src="./img/email.png" width="30" alt=""><span>johnsmith@cyolo.io</span></a></p>
+                <!-- MOBILE PHONE NUMBER -->
+                <p id="mobilePhoneSignature" style="vertical-align:middle;margin-bottom:15px;"><a href="tel:#" style="color:#005163;font-size:17px;"><img src="./img/phone.png" width="30" alt=""><span>+1 201-555-0123</span></a></p>
+                <!-- LOGO -->
+                <p style="margin-bottom:5px;"><a href="https://www.cyolo.io"><img src="./img/logo.png" width="92" alt=""></a></p>
+                <!-- YOUTUBE -->
+                <span style="display:inline-block;"><a href="https://www.youtube.com/channel/UCdxVJiDvgECOR1bc1fV6erg" target="_blank"><img width="26" src="./img/youtube.png"></a>&nbsp;</span>
+                <!-- LINKEDIN -->
+                <span style="display:inline-block;"><a href="https://www.linkedin.com/authwall?trk=qf&amp;originalReferer=&amp;sessionRedirect=https%3A%2F%2Fil.linkedin.com%2Fcompany%2Fcyolo%2F" target="_blank"><img width="26" src="./img/linkedin.png"></a>&nbsp;</span>
+                <!-- WEBSITE -->
+                <span style="display:inline-block;"><a href="https://www.cyolo.io" target="_blank"><img width="26" src="./img/website.png"></a></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Settings -->
+    <div class="card">
+      <div class="card-header d-flex align-items-center">Settings</div>
+      <div class="card-body">
+        <div class="row">
+          <!-- Full Name -->
+          <div class="col-md">
+            <label class="form-label fw-semibold">Full Name</label>
+            <div class="input-group mb-3">
+              <input id="fullNameInput" type="search" class="form-control" placeholder="John Smith" aria-label="Text input with checkbox" value="">
+            </div>
+          </div>
+          <!-- Job Title -->
+          <div class="col-md">
+            <label class="form-label fw-semibold">Job Title</label>
+            <div class="input-group mb-3">
+              <input id="jobTitleInput" type="search" class="form-control" placeholder="Product Manager" aria-label="Text input with checkbox" value="">
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <!-- Email Address -->
+          <div class="col-md">
+            <label class="form-label fw-semibold">Email</label>
+            <div class="input-group mb-3">
+              <input id="emailInput" type="search" class="form-control" placeholder="johnsmith@cyolo.io" aria-label="Text input with checkbox" value="">
+            </div>
+          </div>
+          <!-- Mobile Phone -->
+          <div class="col-md">
+            <label class="form-label fw-semibold">
+              Phone Number
+              <span class="text-secondary align-baseline ms-1" data-bs-toggle="tooltip" data-bs-title="Supports national and international formatting, e.g. +1 201-555-0123 or &nbsp; &nbsp; &nbsp; (201) 555-0123">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15.5" height="15.5" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.75" cy="7.75" r="7"/><line x1="7.75" y1="10.55" x2="7.75" y2="7.75"/><line x1="7.75" y1="4.95" x2="7.76" y2="4.95"/></svg>
+              </span>
+            </label>
+            <div class="input-group mb-3">
+              <input id="mobileInput" type="search" class="form-control" aria-label="Text input with checkbox" value="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="container px-5 py-4 text-secondary text-center mt-auto">
+    <small>&copy; <a href="https://cyolo.io/" target="_blank">Cyolo</a> Email Signature</small>
+  </footer>
 </body>
+<!-- International Telephone Input JS -->
+<script src="./js/intlTelInput.min.js"></script>
+<script>
+  // International Telephone Input initialization
+  const inputMobile = document.querySelector("#mobileInput");
+  
+  window.intlTelInput(inputMobile, {
+    loadUtilsOnInit: "./utils.js",
+    nationalMode: false, // National vs international formatting for numbers e.g. placeholders and displaying existing numbers (e.g. +1).
+    // fixDropdownWidth: false, // Fix the dropdown width to the input width (rather than being as wide as the longest country name).
+    initialCountry: "auto", // Determine the user's country based on their IP address (along with the geoIpLookup option below).
+    geoIpLookup: callback => {
+      fetch("https://ipapi.co/json")
+        .then(res => res.json())
+        .then(data => callback(data.country_code))
+        .catch(() => callback("us"));
+    }
+  });
+</script>
+<!-- Bootstrap JS -->
+<script src="./js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="./js/custom.js"></script>
+<!-- Top Action Icons -->
+<script>
+  // Bootstrap enable tooltips
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
+
+  async function signatureTooltip() {
+    try {
+      // Returns a Bootstrap tooltip instance
+      const tooltip = bootstrap.Tooltip.getOrCreateInstance(copySignature);
+      // Change tooltip text
+      tooltip.setContent({ '.tooltip-inner': 'Copied!' });
+      // Reset default
+      copySignature.addEventListener('mouseout', function() {
+        tooltip.setContent({ '.tooltip-inner': 'Copy signature' });
+      });
+    } catch (error) {
+      // Optional: Display an error message to the user
+      console.error('Failed to copy to clipboard:', error);
+    }
+  }
+
+  // Select signature and copy to clipboard
+  const copySignature = document.getElementById('copySignature');
+
+  function selectText(node) {
+    node = document.getElementById(node);
+
+    if (document.body.createTextRange) {
+      const range = document.body.createTextRange();
+      range.moveToElementText(node);
+      range.select();
+    } else if (window.getSelection) {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(node);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    } else {
+      console.warn("Could not select text in node: Unsupported browser.");
+    }
+  }
+  
+  copySignature.addEventListener('click', () => {
+    selectText('signatureOutput');
+    document.execCommand('copy');
+    signatureTooltip();
+  });
+</script>
 </html>

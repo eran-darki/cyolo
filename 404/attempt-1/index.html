@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:wght@700&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="https://cyolo.io/wp-content/uploads/2020/08/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://cyolo.io/img/favicon.svg" type="image/x-icon">
   <title>404 - Page not found - Cyolo</title>
   
   <style>
@@ -139,33 +139,4 @@
     Powered by <img src="./logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
   </footer>
 </body>
-<script>
-  var img = $("img"), btn = $("button"),
-    angle, maxRadius = 10, radius = maxRadius,
-    playing = true, time= 0;
-
-  (function loop() {
-    angle = Math.sin(time) * radius;            // calc current angle
-    setTransform(img, angle);
-
-    if (playing) {
-      if (radius < maxRadius) radius *= 1.03;   // increase 3% each frame upto max
-    } else {
-      radius *= 0.99;                           // reduce 1% each frame
-    }
-    
-    time += 0.1;
-    requestAnimationFrame(loop)                 // loop, can be stopped when radius < n
-  })();
-
-  function setTransform(img, angle) {
-    img.css("transform", "rotate(" + angle + "deg)");
-    img.css("-webkit-transform", "rotate(" + angle + "deg)");
-  }
-
-  btn.on("click", function() {
-    playing = !playing;
-    if (playing && radius < 0.1) radius = 0.1;  // give some meat in case =0
-  });
-</script>
 </html>
