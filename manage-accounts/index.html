@@ -95,7 +95,7 @@
 				</li>
 				<div class="no-results-found">
 					<img src="./static/no-results-icon.svg" alt="">
-					<div class="headline">No results found.</div>
+					<div class="headline">No results found</div>
 					Try again with a different term.
 				</div>
 			</ul>
@@ -145,6 +145,7 @@
 	<script>
 		const searchInput = document.getElementById('searchInput');
 		const clearSearch = document.getElementById('clearSearch');
+		const noResultsFound = document.querySelector('.no-results-found');
 		
 		// Filter results list
 		function filterList() {
@@ -165,9 +166,9 @@
 				}
 				// Show/hode no results found
 				if (li.length === (Array.from(li).filter(el => getComputedStyle(el).display === 'none').length)) {
-					document.querySelector('.no-results-found').style.display = 'flex';
+					noResultsFound.style.display = 'flex';
 				} else {
-					document.querySelector('.no-results-found').style.display = 'none';
+					noResultsFound.style.display = 'none';
 				}
 			});
 			showClearSearchBtn();
