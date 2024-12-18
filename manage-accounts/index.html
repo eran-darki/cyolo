@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="./static/favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="./style.css">
+	<title>Manage Accounts</title>
+</head>
+
+<body>
+	<header>
+		<img src="./static/logo.svg" alt="">
+	</header>
+
+	<main>
+		<div class="container">
+			<img src="./static/manage-accounts-icon.svg" alt="">
+			<h2>Manage Accounts</h2>
+			<p>Connect, add or remove accounts</p>
+
+			<div class="search-wrapper">
+				<input type="text" placeholder="Search accounts" name="" id="searchInput" onkeyup="filterList()">
+				<span id="clearSearch"></span>
+			</div>
+
+			<ul id="account-list" class="account-list">
+				<li class="account-item">
+					<input type="checkbox" name="" id="parent" checked>
+					<label for="parent">
+						main-domain.address.com
+						<div class="actions-wrapper">
+							<span class="action connect-btn"></span>
+							<span class="action remove-btn"></span>
+						</div>
+					</label>
+					<ul>
+						<li class="account-item active">
+							<div class="sub-domain">
+								<div class="account-name">NY Factory</div>
+								newyork.address.com/login
+							</div>
+							<img src="./static/selected-account-icon.svg" alt="" class="account-icon">
+						</li>
+						<li class="account-item">
+							<div class="sub-domain">
+								<div class="account-name">China Recycling Production</div>
+								hong-kong.construction.com/chn/signin
+							</div>
+							<div class="actions-wrapper">
+								<span class="action connect-btn"></span>
+								<span class="action remove-btn"></span>
+							</div>
+						</li>
+						<li class="account-item">
+							<div class="sub-domain">
+								<div class="account-name">Electronic Facility</div>
+								junkyard.website.com/welcome
+							</div>
+							<div class="actions-wrapper">
+								<span class="action connect-btn"></span>
+								<span class="action remove-btn"></span>
+							</div>
+						</li>
+					</ul>
+				</li>
+				<li class="account-item">
+					login.very-long-domain-name.address.com/stg/welcome
+					<div class="actions-wrapper">
+						<span class="action connect-btn"></span>
+						<span class="action remove-btn"></span>
+					</div>
+				</li>
+				<li class="account-item">
+					quasarbyte.global.random.net
+					<div class="actions-wrapper">
+						<span class="action connect-btn"></span>
+						<span class="action remove-btn"></span>
+					</div>
+				</li>
+				<li class="account-item">
+					nebulastream.worldwide.org
+					<div class="actions-wrapper">
+						<span class="action connect-btn"></span>
+						<span class="action remove-btn"></span>
+					</div>
+				</li>
+				<li class="account-item">
+					incognito.console-log.io/connect
+					<div class="actions-wrapper">
+						<span class="action connect-btn"></span>
+						<span class="action remove-btn"></span>
+					</div>
+				</li>
+			</ul>
+			<button id="open-modal-btn">Add Account</button>
+		</div>
+	</main>
+
+	<footer>
+		Powered by <img src="./static/logo-footer.svg" alt=""> <span>Your secure remote work environment</span>
+	</footer>
+
+	<!-- Add Account Modal -->
+	<div class="modal" id="modal">
+		<div class="modal-content">
+			<img src="./static/manage-accounts-icon.svg" alt="">
+			<h2>Add Account</h2>
+			<p>Enter account domain name to continue</p>
+			<div class="cta-wrapper">
+				<input type="text" id="account-name-input" placeholder="domain-name.example.com">
+				<div class="account-error-message">Domain name is not valid</div>
+				<div class="account-error-message">Domain name already exists.</div>
+				<button id="next-btn" disabled>Add</button>
+				<div class="cancel-link close-modal-btn">Cancel</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Remove Account Modal -->
+	<div class="modal" id="delete-modal">
+		<div class="delete-modal-content">
+			<div class="top-bar">
+				Remove Account
+				<span class="close-modal-btn">
+					<img src="./static/close-icon.svg" alt="">
+				</span>
+			</div>
+			<div class="main-text">You are about to remove {domain-name@address.com}</div>
+			<div class="bottom-bar">
+				<button class="cancel-btn close-modal-btn">Cancel</button>
+				<button id="delete-btn">Remove</button>
+			</div>
+		</div>
+	</div>
+
+	<script>
+		const searchInput = document.getElementById('searchInput');
+		const clearSearch = document.getElementById('clearSearch');
+		
+		// Filter results list
+		function filterList() {
+			showClearSearchBtn();
+			let input, filter, ul, li, a, i, txtValue;
+			input = document.getElementById('searchInput');
+			filter = input.value.toLowerCase();
+			ul = document.getElementById('account-list');
+			li = ul.getElementsByTagName('li');
+			for (i = 0; i < li.length; i++) {
+				domain = li[i];
+				txtValue = domain.textContent || domain.innerText;
+				// let regex = new RegExp(filter,'g');
+				// let newText = domain.innerHTML.replace(regex,'<mark>'+filter+'</mark>');
+				if (txtValue.toLowerCase().indexOf(filter) > -1) {
+					li[i].style.display = '';
+					// li[i].innerHTML = newText;
+				} else {
+					li[i].style.display = 'none';
+				}
+			}
+		}
+
+		// Show/hide clear icon
+		function showClearSearchBtn() {
+			if (searchInput.value == '') {
+				clearSearch.style.display = 'none';
+				searchInput.focus();
+			}
+			else clearSearch.style.display = 'block';
+		}
+
+		// Clear search
+		clearSearch.addEventListener('click', function () {
+			searchInput.focus();
+			searchInput.value = '';
+			showClearSearchBtn();
+			filterList();
+		});
+	</script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const accountList = document.getElementById('account-list');
+			const modal = document.getElementById('modal');
+			const openModalBtn = document.getElementById('open-modal-btn');
+			const closeModalBtn = document.querySelectorAll('.close-modal-btn');
+			const accountNameInput = document.getElementById('account-name-input');
+			const nextBtn = document.getElementById('next-btn');
+			const deleteModal = document.getElementById('delete-modal');
+			const deleteBtn = document.getElementById('delete-btn');
+
+			// const    accounts = [
+			//     {name:'domain.address.com',isSelected:true},
+			//     {name:'bbb.cyolo.io',isSelected:false},
+			//     {name:'ccc.cyolo.io',isSelected:false},
+			// ]
+			// Fetch accounts from the server
+			// fetch('http://127.0.0.1:61070/v1/accounts')
+			//     .then(response => response.json())
+			//     .then(accounts => {
+			//
+			// accounts.forEach(account => {
+			//     const {name, isSelected} = account
+			//     const listItem = document.createElement('li');
+			//     listItem.classList.add('account-item');
+
+			//     const accountName = document.createElement('span');
+			//     accountName.classList.add('account-name');
+			//     accountName.textContent = name;
+
+			//     const accountActions = document.createElement('div');
+			//     accountActions.classList.add('account-actions');
+
+			//     const accountIcon = document.createElement('img');
+			//     accountIcon.src = isSelected ? './static/selected-account-icon.svg' : './static/account-icon.svg';
+			//     accountIcon.alt = 'Check';
+			//     accountIcon.className = 'account-icon'
+
+			//     const deleteIcon = document.createElement('span');
+			//     deleteIcon.className = 'trash-icon'
+			//     deleteIcon.addEventListener('click', () => {
+			//         deleteModal.style.display = 'flex';
+			//     });
+
+			//     deleteBtn.addEventListener('click', () => {
+			//         fetch(`http://127.0.0.1:61070/v1/accounts/delete/${name}`, {
+			//             method: 'DELETE'
+			//         })
+			//         .then(response => {
+			//             if (response.ok) {
+			//                 listItem.remove();
+			//             } else {
+			//                 console.error('Failed to delete account');
+			//             }
+			//         })
+			//         .catch(error => console.error('Error:', error));
+			//     });
+
+			//     listItem.appendChild(accountIcon);
+			//     listItem.appendChild(accountName);
+			//     if (!isSelected) {
+			//         listItem.appendChild(deleteIcon);
+			//     }
+			//     accountList.appendChild(listItem);
+			// });
+			// })
+			// .catch(error => console.error('Error:', error));
+
+			// Open modal
+			openModalBtn.addEventListener('click', () => {
+				modal.style.display = 'flex';
+				accountNameInput.focus();
+			});
+
+			const closeModal = () => {
+				// Close all opened modals
+				const allModals = document.querySelectorAll('.modal');
+				allModals.forEach(function (modal) {
+					modal.style.display = 'none';
+				});
+				accountNameInput.value = '';
+				nextBtn.disabled = true;
+			};
+
+			closeModalBtn.forEach(function (closeBtn) {
+				closeBtn.addEventListener('click', closeModal);
+			});
+
+			// Enable/disable Next button based on input
+			accountNameInput.addEventListener('input', () => {
+				nextBtn.disabled = accountNameInput.value.trim() === '';
+			});
+
+			// Handle Next button click
+			// nextBtn.addEventListener('click', () => {
+			//     const accountName = accountNameInput.value.trim();
+			//     fetch(`http://127.0.0.1:61070/v1/accounts/add/${accountName}`, {
+			//         method: 'POST'
+			//     })
+			//         .then(response => {
+			//             if (response.ok) {
+			//                 closeModal()
+			//                 location.reload()
+			//             } else {
+			//                 console.error('Failed to add account');
+			//             }
+			//         })
+			//         .catch(error => console.error('Error:', error));
+			// });
+		});
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,487 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Heebo&family=Montserrat:wght@500&display=swap'); */
+/* @font-face {
+    font-family: "Heebo";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Heebo-Regular"), url("../fonts/Heebo-Regular.woff") format("woff");
+  }
+  @font-face {
+    font-family: "Montserrat";
+    font-style: normal;
+    font-weight: 500;
+    src: local("Montserrat Medium"), url("../fonts/Montserrat-Regular.woff") format("woff");
+  } */
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+
+:root {
+  --cyolo-primary-color: #123be5;
+  --cyolo-secondary-color: #000850;
+  --cyolo-bg-color: #eff2f6;
+  --cyolo-error-color: #e41c1c;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Heebo', sans-serif;
+  font-size: 13px;
+  background-color: var(--cyolo-bg-color);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  color: var(--cyolo-secondary-color);
+  cursor: default;
+}
+
+h2,
+p {
+  margin: 0;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 8px;
+  font-size: 22px;
+}
+
+h2,
+.delete-modal-content .top-bar,
+.delete-modal-content {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+
+/* Search input */
+.search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  transform: translateX(8px);
+}
+
+#searchInput {
+  background-color: var(--cyolo-bg-color);
+  border: 1px solid var(--cyolo-bg-color);
+  padding: 8px;
+  padding-left: 28px;
+  padding-right: 28px;
+  border-radius: 4px;
+  outline: 0;
+  flex-grow: 1;
+  background-image: url('./static/search-icon.svg');
+  background-repeat: no-repeat;
+  background-position: 8px 8px;
+}
+
+#searchInput:focus {
+  border: 1px solid var(--cyolo-primary-color);
+}
+
+#clearSearch {
+  display: none;
+  position: absolute;
+  right: 8px;
+  width: 16px;
+  height: 16px;
+  background-image: url('./static/clear-search-sprite.svg');
+  background-repeat: no-repeat;
+  background-position: top;
+  cursor: pointer;
+}
+
+#clearSearch:hover {
+  background-position: bottom;
+}
+
+.account-list label {
+  position: relative;
+  cursor: pointer;
+  align-items: center;
+}
+
+.account-list input ~ label:before {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  content: '';
+  background-image: url('./static/collapse-expand-sprite-2.svg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.account-list input:checked ~ label:before {
+  background-position: top;
+}
+
+.account-list input {
+  display: none;
+}
+
+.account-list input ~ ul li:not(.active) {
+  display: none;
+  list-style: none;
+}
+
+.account-list input:checked ~ ul li, input ~ ul li.active {
+  display: flex;
+}
+
+.account-list input:checked ~ ul li.active {
+  border-bottom: 1px solid var(--cyolo-bg-color);
+}
+
+.account-list input ~ ul li.active {
+  border-bottom: 0;
+}
+
+.active {
+  position: sticky !important;
+  top: 0;
+  z-index: 1;
+}
+
+.active img {
+  margin-left: auto;
+}
+
+ul > li:last-child {
+  border: 0;
+}
+
+.account-list > li:first-child, .account-list > li:first-child > ul {
+  padding: 0;
+}
+
+.account-list > li:first-child > ul li {
+  padding-left: 48px;
+}
+
+.account-item, .account-item label {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--cyolo-bg-color);
+  display: flex;
+  background-color: #fff;
+  /* min-height: 57px; */
+  word-break: break-word;
+  position: relative;
+}
+
+.account-item:has(>input) {
+  flex-direction: column;
+}
+
+.account-item:first-child:not(.active) {
+  padding-bottom: 0;
+}
+
+.account-item:hover:not(:first-child), label:hover {
+  background-color: var(--cyolo-bg-color);
+}
+
+label:hover .actions-wrapper {
+  display: flex;
+}
+
+.account-item .actions-wrapper {
+  display: none;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+  position: absolute;
+  background-color: color-mix(in srgb, var(--cyolo-bg-color) 90%, transparent);;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding-right: 24px;
+  padding-left: 8px;
+}
+
+.account-item:hover:not(:first-child) .actions-wrapper {
+  display: flex;
+}
+
+.sub-domain .account-name {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+header {
+  background-color: var(--cyolo-secondary-color);
+  padding: 12px 32px;
+}
+
+main {
+  padding: 50px;
+  margin: auto;
+  width: 550px;
+}
+
+main .container {
+  border-radius: 4px;
+  padding: 50px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+main .account-list {
+  list-style: none;
+  padding: 0;
+  height: 324px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translateX(8px);
+  text-align: left;
+}
+
+main .account-item .action {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-left: auto;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: top;
+  background-color: #fff;
+  box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  text-align: center;
+  word-break: normal;
+}
+
+main .account-item .action.remove-btn {
+  background-image: url('./static/remove-icon-sprite.svg');
+}
+
+main .account-item .action.connect-btn {
+  background-image: url('./static/connect-icon-sprite.svg');
+}
+
+main .account-item .action.remove-btn:before {
+  content: 'Remove';
+}
+
+main .account-item .action.connect-btn:before {
+  content: 'Connect';
+}
+
+main .account-item .action:before {
+  visibility: hidden;
+  position: absolute;
+  bottom: calc(100% + 10px);
+  transform: translateX(-50%);
+  color: #fff;
+  background-color: #000530;
+  border-radius: 4px;
+  padding: 4px 8px;
+  z-index: 2;
+}
+
+main .account-item .action:after {
+  visibility: hidden;
+  position: absolute;
+  content: '';
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #000530 transparent transparent transparent;
+  z-index: 2;
+}
+
+main .account-item .action:hover {
+  background-position: bottom;
+}
+
+main .account-item .action.remove-btn:hover {
+  background-color: var(--cyolo-error-color);
+}
+
+main .account-item .action.connect-btn:hover {
+  background-color: var(--cyolo-primary-color);
+}
+
+main .account-item .action:hover:before,
+main .account-item .action:hover:after {
+  visibility: visible;
+}
+
+button {
+  background-color: #FF6645;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  padding: 6px 24px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Add Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  width: 450px;
+  padding: 50px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.modal-content input {
+  display: block;
+  width: 200px;
+  padding: 8px;
+  margin-top: 8px;
+  margin-bottom: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--cyolo-bg-color);
+  border: 1px solid var(--cyolo-bg-color);
+  border-radius: 4px;
+  margin-top: 24px;
+  outline: 0;
+}
+
+.modal-content input:focus {
+  border-color: #123be5;
+}
+
+.modal-content .cta-wrapper {
+  width: 200px;
+  margin: auto;
+}
+
+.account-error-message {
+  display: none;
+  color: var(--cyolo-error-color);
+  font-size: 12px;
+  text-align: left;
+}
+
+.modal-content button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.modal-content button:disabled {
+  background-color: #B7B7B7;
+}
+
+.cancel-link {
+  display: inline-block;
+  color: #123be5;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.cancel-link:hover {
+  text-decoration: underline;
+}
+
+/* Delete Modal Styles */
+.delete-modal-content {
+  flex-grow: 1;
+  max-width: 700px;
+  background-color: var(--cyolo-bg-color);
+  border-radius: 4px;
+  font-size: 15px;
+  overflow: hidden;
+}
+
+.delete-modal-content .top-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background-color: #fff;
+  font-size: 15px;
+}
+
+.delete-modal-content .top-bar .close-modal-btn {
+  background-color: #fff;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-modal-content .main-text {
+  padding: 16px;
+}
+
+.delete-modal-content .bottom-bar {
+  display: flex;
+  padding: 16px;
+  border-top: 1px solid #fff;
+  justify-content: flex-end;
+}
+
+.delete-modal-content .bottom-bar button {
+  margin: 0;
+}
+
+.delete-modal-content .bottom-bar button:last-child {
+  margin-left: 16px;
+}
+
+.delete-modal-content .bottom-bar button.cancel-btn {
+  background-color: #fff;
+  color: var(--cyolo-secondary-color);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  display: inline-block;
+  max-width: 450px;
+  margin-right: auto;
+  margin-left: auto;
+  border-top: 1px solid #b7b7b7;
+  font-size: 0.8125rem;
+  padding: 30px;
+}
+
+footer img {
+  vertical-align: middle;
+  margin-top: -4px;
+  margin-right: 5px;
+  margin-left: 2px;
+}
+
+footer span {
+  color: #474747;
+}
