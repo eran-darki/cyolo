@@ -93,6 +93,11 @@
 						<span class="action remove-btn"></span>
 					</div>
 				</li>
+				<div class="no-results-found">
+					<img src="./static/no-results-icon.svg" alt="">
+					<div class="headline">No results found.</div>
+					Try again with a different term.
+				</div>
 			</ul>
 			<button id="open-modal-btn">Add Account</button>
 		</div>
@@ -127,7 +132,9 @@
 					<img src="./static/close-icon.svg" alt="">
 				</span>
 			</div>
-			<div class="main-text">You are about to remove {domain-name@address.com}</div>
+			<div class="main-text">
+				You are about to remove <span>domain-name@address.com/login</span>
+			</div>
 			<div class="bottom-bar">
 				<button class="cancel-btn close-modal-btn">Cancel</button>
 				<button id="delete-btn">Remove</button>
@@ -141,33 +148,48 @@
 		
 		// Filter results list
 		function filterList() {
-			showClearSearchBtn();
 			let input, filter, ul, li, a, i, txtValue;
 			input = document.getElementById('searchInput');
 			filter = input.value.toLowerCase();
 			ul = document.getElementById('account-list');
-			li = ul.getElementsByTagName('li');
-			for (i = 0; i < li.length; i++) {
-				domain = li[i];
+			// li = ul.getElementsByTagName('li');
+			li = ul.querySelectorAll('li');
+
+			li.forEach((domain) => {
 				txtValue = domain.textContent || domain.innerText;
-				// let regex = new RegExp(filter,'g');
-				// let newText = domain.innerHTML.replace(regex,'<mark>'+filter+'</mark>');
 				if (txtValue.toLowerCase().indexOf(filter) > -1) {
-					li[i].style.display = '';
-					// li[i].innerHTML = newText;
+					domain.style.display = '';
+					// domain.innerHTML = newText;
 				} else {
-					li[i].style.display = 'none';
+					domain.style.display = 'none';
 				}
-			}
+				// Show/hode no results found
+				if (li.length === (Array.from(li).filter(el => getComputedStyle(el).display === 'none').length)) {
+					document.querySelector('.no-results-found').style.display = 'flex';
+				} else {
+					document.querySelector('.no-results-found').style.display = 'none';
+				}
+			});
+			showClearSearchBtn();
 		}
+
+		// for (i = 0; i < li.length; i++) {
+		// 	domain = li[i];
+		// 	txtValue = domain.textContent || domain.innerText;
+		// 	if (txtValue.toLowerCase().indexOf(filter) > -1) {
+		// 		li[i].style.display = '';
+		// 	}
+		// 	else {
+		// 		li[i].style.display = 'none';
+		// 	}
+		// }
 
 		// Show/hide clear icon
 		function showClearSearchBtn() {
 			if (searchInput.value == '') {
 				clearSearch.style.display = 'none';
 				searchInput.focus();
-			}
-			else clearSearch.style.display = 'block';
+			} else clearSearch.style.display = 'block';
 		}
 
 		// Clear search
@@ -176,6 +198,16 @@
 			searchInput.value = '';
 			showClearSearchBtn();
 			filterList();
+		});
+
+		// Remove account action
+		const removeBtn = document.querySelectorAll('.remove-btn');
+		const deleteModal = document.getElementById('delete-modal');
+		
+		removeBtn.forEach((element) => {
+			element.addEventListener('click', () => {
+				deleteModal.style.display = 'flex';
+			});
 		});
 	</script>
 
@@ -187,8 +219,8 @@
 			const closeModalBtn = document.querySelectorAll('.close-modal-btn');
 			const accountNameInput = document.getElementById('account-name-input');
 			const nextBtn = document.getElementById('next-btn');
-			const deleteModal = document.getElementById('delete-modal');
-			const deleteBtn = document.getElementById('delete-btn');
+			// const deleteModal = document.getElementById('delete-modal');
+			// const deleteBtn = document.getElementById('delete-btn');
 
 			// const    accounts = [
 			//     {name:'domain.address.com',isSelected:true},

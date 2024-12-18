@@ -11,7 +11,7 @@
     font-weight: 500;
     src: local("Montserrat Medium"), url("../fonts/Montserrat-Regular.woff") format("woff");
   } */
-  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;500&family=Montserrat:wght@500;600');
 
 :root {
   --cyolo-primary-color: #123be5;
@@ -106,6 +106,25 @@ h2,
 
 #clearSearch:hover {
   background-position: bottom;
+}
+
+/* Account list */
+.account-list .no-results-found {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.7;
+  padding-top: 20px;
+}
+
+.account-list .no-results-found img {
+  margin-bottom: 16px;
+}
+
+.account-list .no-results-found .headline {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
 }
 
 .account-list label {
@@ -441,7 +460,11 @@ button {
 }
 
 .delete-modal-content .main-text {
-  padding: 16px;
+  padding: 24px;
+}
+
+.delete-modal-content .main-text span {
+  font-weight: 600;
 }
 
 .delete-modal-content .bottom-bar {
