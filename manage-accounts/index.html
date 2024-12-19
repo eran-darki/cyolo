@@ -25,80 +25,86 @@
 				<span id="clearSearch"></span>
 			</div>
 
-			<ul id="account-list" class="account-list">
-				<li class="account-item">
-					<input type="checkbox" name="" id="parent" checked>
-					<label for="parent">
-						main-domain.address.com
+			<div style="position:relative;">
+				<ul id="account-list" class="account-list">
+					<li class="account-item" style="position:static;">
+						<input type="checkbox" name="" id="parent" checked>
+						<label for="parent" style="position:static;">
+							<span class="collapse-expand-icon"></span>
+							main-domain.address.com
+							<div class="actions-wrapper" style="bottom:auto;height:52px;">
+								<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
+								<span class="action remove-btn"></span>
+							</div>
+						</label>
+						<ul>
+							<li class="account-item active">
+								<div class="sub-domain">
+									<div class="account-name">NY Factory</div>
+									newyork.address.com/login
+								</div>
+								<img src="./static/selected-account-icon.svg" alt="" class="account-icon">
+							</li>
+							<li class="account-item">
+								<div class="sub-domain">
+									<div class="account-name">China Recycling Production</div>
+									hong-kong.construction.com/chn/signin
+								</div>
+								<div class="actions-wrapper">
+									<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
+								</div>
+							</li>
+							<li class="account-item">
+								<div class="sub-domain">
+									<div class="account-name">Electronic Facility</div>
+									junkyard.website.com/welcome
+								</div>
+								<div class="actions-wrapper">
+									<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
+								</div>
+							</li>
+						</ul>
+					</li>
+					<li class="account-item">
+						login.very-very-long-domain-name.address.com/stg/welcome
 						<div class="actions-wrapper">
-							<span class="action connect-btn"></span>
+							<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
 							<span class="action remove-btn"></span>
 						</div>
-					</label>
-					<ul>
-						<li class="account-item active">
-							<div class="sub-domain">
-								<div class="account-name">NY Factory</div>
-								newyork.address.com/login
-							</div>
-							<img src="./static/selected-account-icon.svg" alt="" class="account-icon">
-						</li>
-						<li class="account-item">
-							<div class="sub-domain">
-								<div class="account-name">China Recycling Production</div>
-								hong-kong.construction.com/chn/signin
-							</div>
-							<div class="actions-wrapper">
-								<span class="action connect-btn"></span>
-								<span class="action remove-btn"></span>
-							</div>
-						</li>
-						<li class="account-item">
-							<div class="sub-domain">
-								<div class="account-name">Electronic Facility</div>
-								junkyard.website.com/welcome
-							</div>
-							<div class="actions-wrapper">
-								<span class="action connect-btn"></span>
-								<span class="action remove-btn"></span>
-							</div>
-						</li>
-					</ul>
-				</li>
-				<li class="account-item">
-					login.very-long-domain-name.address.com/stg/welcome
-					<div class="actions-wrapper">
-						<span class="action connect-btn"></span>
-						<span class="action remove-btn"></span>
+					</li>
+					<li class="account-item">
+						quasarbyte.global.random.net
+						<div class="actions-wrapper">
+							<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
+							<span class="action remove-btn"></span>
+						</div>
+					</li>
+					<li class="account-item">
+						nebulastream.worldwide.org
+						<div class="actions-wrapper">
+							<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
+							<span class="action remove-btn"></span>
+						</div>
+					</li>
+					<li class="account-item">
+						incognito.console-log.io/connect/auth/log-in
+						<div class="actions-wrapper">
+							<a class="action connect-btn" href="https://users.product.cyolo.io" target="_blank"></a>
+							<span class="action remove-btn"></span>
+						</div>
+					</li>
+					<!-- No results found -->
+					<div class="no-results-found">
+						<img src="./static/no-results-icon.svg" alt="">
+						<div class="headline">No results found</div>
+						Try again with a different term.
 					</div>
-				</li>
-				<li class="account-item">
-					quasarbyte.global.random.net
-					<div class="actions-wrapper">
-						<span class="action connect-btn"></span>
-						<span class="action remove-btn"></span>
-					</div>
-				</li>
-				<li class="account-item">
-					nebulastream.worldwide.org
-					<div class="actions-wrapper">
-						<span class="action connect-btn"></span>
-						<span class="action remove-btn"></span>
-					</div>
-				</li>
-				<li class="account-item">
-					incognito.console-log.io/connect/auth/log-in
-					<div class="actions-wrapper">
-						<span class="action connect-btn"></span>
-						<span class="action remove-btn"></span>
-					</div>
-				</li>
-				<div class="no-results-found">
-					<img src="./static/no-results-icon.svg" alt="">
-					<div class="headline">No results found</div>
-					Try again with a different term.
-				</div>
-			</ul>
+					<!-- Loader -->
+					<!-- <div class="loader-wrapper">
+						<svg class="spinner" viewBox="25 25 50 50" stroke-width="6"><circle cx="50" cy="50" r="20"/></svg>
+					</div> -->
+				</ul>
+			</div>
 			<button id="open-modal-btn">Add Account</button>
 		</div>
 	</main>
@@ -146,15 +152,25 @@
 		const searchInput = document.getElementById('searchInput');
 		const clearSearch = document.getElementById('clearSearch');
 		const noResultsFound = document.querySelector('.no-results-found');
+		let ul = document.getElementById('account-list');
+		let li = ul.querySelectorAll('li');
+
+		// Set account list height
+		window.addEventListener('DOMContentLoaded', function() {
+			if (ul.getBoundingClientRect().height <= 324) {
+				ul.style.height = `${ul.getBoundingClientRect().height + 31}px`;
+			} else {
+				ul.classList.add('account-list-overflow');
+			}
+		});
 		
 		// Filter results list
 		function filterList() {
-			let input, filter, ul, li, a, i, txtValue;
+			let input, filter, txtValue;
 			input = document.getElementById('searchInput');
 			filter = input.value.toLowerCase();
-			ul = document.getElementById('account-list');
-			// li = ul.getElementsByTagName('li');
-			li = ul.querySelectorAll('li');
+			// ul = document.getElementById('account-list');
+			// li = ul.querySelectorAll('li');
 
 			li.forEach((domain) => {
 				txtValue = domain.textContent || domain.innerText;
@@ -173,17 +189,6 @@
 			});
 			showClearSearchBtn();
 		}
-
-		// for (i = 0; i < li.length; i++) {
-		// 	domain = li[i];
-		// 	txtValue = domain.textContent || domain.innerText;
-		// 	if (txtValue.toLowerCase().indexOf(filter) > -1) {
-		// 		li[i].style.display = '';
-		// 	}
-		// 	else {
-		// 		li[i].style.display = 'none';
-		// 	}
-		// }
 
 		// Show/hide clear icon
 		function showClearSearchBtn() {
