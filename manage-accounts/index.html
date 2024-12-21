@@ -211,8 +211,10 @@
 		const deleteModal = document.getElementById('delete-modal');
 		
 		removeBtn.forEach((element) => {
-			element.addEventListener('click', () => {
+			element.addEventListener('click', (event) => {
 				deleteModal.style.display = 'flex';
+				event.stopPropagation();
+				event.preventDefault();
 			});
 		});
 	</script>
@@ -291,8 +293,8 @@
 				accountNameInput.focus();
 			});
 
+			// Close all opened modals
 			const closeModal = () => {
-				// Close all opened modals
 				const allModals = document.querySelectorAll('.modal');
 				allModals.forEach(function (modal) {
 					modal.style.display = 'none';
