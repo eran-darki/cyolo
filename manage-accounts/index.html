@@ -213,6 +213,7 @@
 		removeBtn.forEach((element) => {
 			element.addEventListener('click', (event) => {
 				deleteModal.style.display = 'flex';
+				// Prevent buttons from bubbling up
 				event.stopPropagation();
 				event.preventDefault();
 			});
