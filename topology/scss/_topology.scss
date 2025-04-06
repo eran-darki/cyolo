@@ -1,0 +1,28 @@
+.draggable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: grab;
+  user-select: none;
+  // transform-origin: center;
+  &:active {
+    cursor: grabbing;
+  }
+  img {
+    pointer-events: none;
+  }
+  .offline-idac {
+    position: absolute;
+    top: 117.5px;
+    right: 669.5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    z-index: -1;
+    @include error-animation;
+  }
+}
+
+
+// Inline animation for SVG file only (topology.svg)
+// .cls-1{border-radius:100%;animation-name:pulse;animation-duration:2s;animation-fill-mode:both;animation-timing-function:ease;animation-iteration-count:infinite;}@keyframes pulse{0%{outline:0 solid rgb(220 53 69 / .8)}70%{outline:10px solid #fff0}100%{outline:0 solid #fff0}}
