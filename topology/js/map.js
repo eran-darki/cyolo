@@ -247,7 +247,7 @@ async function initMap() {
 
   // Global Cloud marker icon
   const globalCloudMarker = document.createElement("div");
-  globalCloudMarker.className = "global-cloud-marker text-primary-700";
+  globalCloudMarker.className = "global-cloud-marker text-custom-color";
 
   // Global
   const markerCenter = new AdvancedMarkerElement ({
@@ -405,7 +405,7 @@ async function initMap() {
     const flightPath = new google.maps.Polyline({
       path: location.flightPlan,
       geodesic: true,
-      strokeColor: '#4285F4',
+      strokeColor: '#0d6efd', // #4285F4 (previous color)
       strokeOpacity: 1.0,
       strokeWeight: 2,
       map: map

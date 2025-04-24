@@ -9,6 +9,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="./css/bootstrap.min.css">
   <link rel="stylesheet" href="./css/style.min.css">
+  <!-- Icon Sets -->
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <title>Node Map</title>
 </head>
 <body class="bg-body-tertiary">
@@ -39,7 +42,7 @@
       <!-- Nodes info -->
       <div class="total-nodes d-inline-flex align-items-center me-3 bg-body-secondary rounded">
         <small class="fw-semibold me-1">Total</small>
-        <span class="badge rounded-pill fw-semibold ms-1 bg-primary-700" data-bs-toggle="tooltip" data-bs-title="Global Cloud">1</span>
+        <span class="badge rounded-pill fw-semibold ms-1 bg-custom-color" data-bs-toggle="tooltip" data-bs-title="Global Cloud">1</span>
         <span class="badge rounded-pill fw-semibold text-bg-info text-white ms-1" data-bs-toggle="tooltip" data-bs-title="Private Gateways">3</span>
         <span class="badge rounded-pill fw-semibold text-bg-primary ms-1" data-bs-toggle="tooltip" data-bs-title="Sites">16</span>
         <span class="badge rounded-pill fw-semibold text-bg-success ms-1" data-bs-toggle="tooltip" data-bs-title="IDACs">52</span>
@@ -63,6 +66,7 @@
   </header>
 
   <main class="container-fluid p-3">
+    <!-- Node details -->
     <div class="node-data d-none position-fixed card shadow">
       <div class="card-header fw-semibold">IDAC</div>
       <div class="card-body d-none idac-info">
@@ -88,9 +92,9 @@
             <div>80b1e8fd</div>
             <div>v6.4.1</div>
             <div>Nov 4, 2024, 7:19 AM</div>
-            <div>62 GB available of 104 GB</div>
+            <div>62 GB free of 104 GB</div>
             <div>2</div>
-            <div>3 GB available of 4 GB</div>
+            <div>3 GB free of 4 GB</div>
             <div>Default</div>
             <div>tcp.domain.com</div>
             <div>IP 172.31.169.154</div>
@@ -113,7 +117,7 @@
             <div>tcp.domain.com</div>
             <div>domain.com</div>
             <div>255.0.0.0</div>
-            <div>12</div>
+            <div><a href="#" class="link-success link-underline link-underline-opacity-0 d-flex align-items-center">6 <i class="bi bi-chevron-right small ms-1"></i></a></div>
             <div>25ms</div>
           </div>
         </div>
@@ -141,7 +145,7 @@
         </div>
       </div>
     </div>
-
+    
     <!-- Tabs Content -->
     <div class="tab-content">
       <!-- Topology -->
@@ -154,17 +158,169 @@
 
         <!-- Widgets -->
         <div class="widgets row justify-content-between">
+          <!-- Left column -->
           <div class="col">
-            <div class="card">
+            <div class="card shadow mb-4">
+              <div class="card-header fw-semibold d-flex justify-content-between">Overview <i class="bi bi-three-dots"></i></div>
               <div class="card-body">
-                This is some text within a card body.
+                <div class="d-flex align-items-center mb-4">
+                  <div class="imagery text-bg-danger position-relative">
+                    <iconify-icon class="position-absolute" icon="bxs:error" height="11" style="top: 13px"></iconify-icon>
+                    <iconify-icon icon="material-symbols:computer-outline-rounded" height="24"></iconify-icon>
+                  </div>
+                  <div class="ms-3 flex-grow-1">
+                    <div class="small d-flex justify-content-between align-items-end text-danger">1 Offline IDAC <a href="#" class="detail fw-semibold link-body-emphasis link-underline link-underline-opacity-0 text-uppercase">Troubleshoot <i class="bi bi-chevron-right"></i></a></div>
+                    <div class="small text-secondary">Since 11:32 AM</div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mb-4">
+                  <div class="imagery text-bg-warning">
+                    <iconify-icon icon="fluent:calendar-ltr-24-regular" height="24"></iconify-icon>
+                  </div>
+                  <div class="ms-3 flex-grow-1">
+                    <div class="small d-flex justify-content-between align-items-end">Account info <a href="#" class="detail fw-semibold link-body-emphasis link-underline link-underline-opacity-0 text-uppercase">Renew <i class="bi bi-chevron-right"></i></a></div>
+                    <div class="small text-secondary">Licence expires on Apr 23, 2025</div>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center">
+                  <div class="imagery text-bg-success">
+                    <iconify-icon icon="ci:users" height="24"></iconify-icon>
+                  </div>
+                  <div class="ms-3 flex-grow-1">
+                    <div class="small d-flex justify-content-between align-items-end">Active users <a href="#" class="detail fw-semibold link-body-emphasis link-underline link-underline-opacity-0 text-uppercase">Detail <i class="bi bi-chevron-right"></i></a></div>
+                    <div class="stat-num fw-semibold">580 <span class="small fw-normal text-secondary">/ 722</span> <span class="small fw-normal text-success ms-1">80%</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card shadow mb-4">
+              <div class="card-header fw-semibold d-flex justify-content-between">Most Engaged Sites <i class="bi bi-three-dots"></i></div>
+              <div class="card-body">
+                <ul class="nav nav-pills nav-fill bg-body-secondary rounded p-1 mb-4">
+                  <li class="nav-item small">
+                    <a class="nav-link text-body bg-body p-1 active" aria-current="page" href="#">Last 24 Hours</a>
+                  </li>
+                  <li class="nav-item small">
+                    <a class="nav-link text-body p-1" href="#">Last 10 Days</a>
+                  </li>
+                </ul>
+                <!-- Sites pills -->
+                <div class="d-flex mb-1">
+                  <div class="d-flex align-items-center justify-content-between flex-grow-1 bg-primary rounded-pill px-3 py-1 fw-semibold text-white">
+                    North Dakota
+                    <iconify-icon icon="ci:users" height="22"></iconify-icon>
+                  </div>
+                  <div class="d-flex flex-column ms-2 small lh-sm">
+                    <span>720</span>
+                    <span class="text-secondary">82%</span>
+                  </div>
+                </div>
+                <div class="d-flex mb-1">
+                  <div class="d-flex align-items-center justify-content-between rounded-pill px-3 py-1 fw-semibold text-white" style="width:75%;background-color:#0a58ca;">
+                    Minneapolis
+                    <iconify-icon icon="ci:users" height="22"></iconify-icon>
+                  </div>
+                  <div class="d-flex flex-column ms-2 small lh-sm">
+                    <span>508</span>
+                    <span class="text-secondary">72%</span>
+                  </div>
+                </div>
+                <div class="d-flex mb-1">
+                  <div class="d-flex align-items-center justify-content-between rounded-pill px-3 py-1 fw-semibold text-white" style="width:65%;background-color:#084298;">
+                    New York
+                    <iconify-icon icon="ci:users" height="22"></iconify-icon>
+                  </div>
+                  <div class="d-flex flex-column ms-2 small lh-sm">
+                    <span>456</span>
+                    <span class="text-secondary">58%</span>
+                  </div>
+                </div>
+                <div class="d-flex mb-1">
+                  <div class="d-flex align-items-center justify-content-between rounded-pill px-3 py-1 fw-semibold text-white" style="width:55%;background-color:#052c65;">
+                    Montreal
+                    <iconify-icon icon="ci:users" height="22"></iconify-icon>
+                  </div>
+                  <div class="d-flex flex-column ms-2 small lh-sm">
+                    <span>332</span>
+                    <span class="text-secondary">45%</span>
+                  </div>
+                </div>
+                <div class="d-flex mb-1">
+                  <div class="d-flex align-items-center justify-content-between bg-secondary-subtle rounded-pill px-3 py-1 fw-semibold text-secondary-emphasis" style="width:40%;">
+                    Miami
+                    <iconify-icon icon="ci:users" height="22"></iconify-icon>
+                  </div>
+                  <div class="d-flex flex-column ms-2 small lh-sm">
+                    <span>0</span>
+                    <span class="text-secondary">No activity</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card shadow mb-4">
+              <div class="card-header fw-semibold d-flex justify-content-between">Most Used Storage IDACs <i class="bi bi-three-dots"></i></div>
+              <div class="card-body">
+                <div class="d-flex align-items-center small mb-3 text-secondary">
+                  <div class="d-flex align-items-center me-3"><i class="bi bi-circle-fill me-2 text-success" style="font-size:0.5rem;"></i> Used</div>
+                  <div class="d-flex align-items-center me-3"><i class="bi bi-circle-fill me-2" style="font-size:0.5rem;"></i> Free</div>
+                </div>
+                <a href="#" class="small d-flex link-body-emphasis link-underline link-underline-opacity-0 mb-3">
+                  Seattle Factory
+                  <div class="d-flex align-items-center justify-content-end flex-grow-1 small">
+                    <span class="text-success">1.85 GB</span>
+                    <div class="progress mx-3" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="height:6px;width:80px;">
+                      <div class="progress-bar bg-success rounded-pill" style="width: 85%"></div>
+                    </div>
+                    <span class="text-secondary">150 MB <i class="bi bi-chevron-right ms-2"></i></span>
+                  </div>
+                </a>
+                <a href="#" class="small d-flex link-body-emphasis link-underline link-underline-opacity-0 mb-3">
+                  Miami Office
+                  <div class="d-flex align-items-center justify-content-end flex-grow-1 small">
+                    <span class="text-success">1.79 GB</span>
+                    <div class="progress mx-3" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="height:6px;width:80px;">
+                      <div class="progress-bar bg-success rounded-pill" style="width: 75%"></div>
+                    </div>
+                    <span class="text-secondary">210 MB <i class="bi bi-chevron-right ms-2"></i></span>
+                  </div>
+                </a>
+                <a href="#" class="small d-flex link-body-emphasis link-underline link-underline-opacity-0 mb-3">
+                  S.Diego Port
+                  <div class="d-flex align-items-center justify-content-end flex-grow-1 small">
+                    <span class="text-success">1.74 GB</span>
+                    <div class="progress mx-3" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="height:6px;width:80px;">
+                      <div class="progress-bar bg-success rounded-pill" style="width: 70%"></div>
+                    </div>
+                    <span class="text-secondary">260 MB <i class="bi bi-chevron-right ms-2"></i></span>
+                  </div>
+                </a>
+                <a href="#" class="small d-flex link-body-emphasis link-underline link-underline-opacity-0">
+                  Alabama Facility
+                  <div class="d-flex align-items-center justify-content-end flex-grow-1 small">
+                    <span class="text-success">1.71 GB</span>
+                    <div class="progress mx-3" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="height:6px;width:80px;">
+                      <div class="progress-bar bg-success rounded-pill" style="width: 62%"></div>
+                    </div>
+                    <span class="text-secondary">290 MB <i class="bi bi-chevron-right ms-2"></i></span>
+                  </div>
+                </a>
               </div>
             </div>
           </div>
+          <!-- Right column -->
           <div class="col">
             <div class="card">
               <div class="card-body">
-                This is some text within a card body.
+                <div class="d-flex align-items-center">
+                  <div class="imagery text-bg-info">
+                    <iconify-icon icon="bi:gear" height="24"></iconify-icon>
+                  </div>
+                  <div class="ms-3 flex-grow-1">
+                    <div class="small d-flex justify-content-between align-items-end">Available update! <a href="#" class="detail fw-semibold link-info link-underline link-underline-opacity-0 text-uppercase">Upgrade to v.6.24 <i class="bi bi-chevron-right"></i></a></div>
+                    <a href="#" class="small link-secondary link-underline link-underline-opacity-0">Release notes <i class="bi bi-chevron-right small"></i></a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -173,88 +329,10 @@
 
       <!-- Hierarchy -->
       <div class="tab-pane fade mt-5" id="hierarchy" role="tabpanel" aria-labelledby="hierarchy-tab" tabindex="0">
-        <!-- <div class="node-data d-none position-absolute card shadow">
-          <div class="card-header fw-semibold">IDAC</div>
-          <div class="card-body d-none idac-info">
-            <div class="row">
-              <div class="col">
-                <div>Status</div>
-                <div>ID</div>
-                <div>Version</div>
-                <div>Certificate expiration date</div>
-                <div>Storage</div>
-                <div>CPU</div>
-                <div>RAM</div>
-                <div>Site</div>
-                <div>Upstream</div>
-                <div>Hostname</div>
-                <div>Host address</div>
-              </div>
-              <div class="col text-secondary">
-                <div>
-                  <span class="badge fw-semibold text-bg-success">ONLINE</span>
-                  <span class="badge fw-semibold text-bg-danger d-none">OFFLINE</span>
-                </div>
-                <div>80b1e8fd</div>
-                <div>v6.4.1</div>
-                <div>Nov 4, 2024, 7:19 AM</div>
-                <div>62 GB available of 104 GB</div>
-                <div>2</div>
-                <div>3 GB available of 4 GB</div>
-                <div>Default</div>
-                <div>tcp.domain.com</div>
-                <div>IP 172.31.169.154</div>
-                <div>100.100.100.2</div>
-              </div>
-            </div>
-          </div>
-          <div class="card-body d-none site-info">
-            <div class="row">
-              <div class="col">
-                <div>Gateway</div>
-                <div>Regional gateway</div>
-                <div>DNS domains</div>
-                <div>CIDR</div>
-                <div>IDACs</div>
-                <div>Latency</div>
-              </div>
-              <div class="col text-secondary">
-                <div>Global Cloud</div>
-                <div>tcp.domain.com</div>
-                <div>domain.com</div>
-                <div>255.0.0.0</div>
-                <div>12</div>
-                <div>25ms</div>
-              </div>
-            </div>
-          </div>
-          <div class="card-body d-none gateway-info">
-            <div class="row">
-              <div class="col">
-                <div>Gateway address</div>
-                <div>Port</div>
-              </div>
-              <div class="col text-secondary">
-                <div>172.16.0.0</div>
-                <div>443</div>
-              </div>
-            </div>
-          </div>
-          <div class="card-body d-none cloud-info">
-            <div class="row">
-              <div class="col">
-                <div>Domain address</div>
-              </div>
-              <div class="col text-secondary">
-                <div>tcp.domain.com</div>
-              </div>
-            </div>
-          </div>
-        </div> -->
         <div class="row cols-wrapper">
           <div class="col">
             <div class="summary d-flex justify-content-end mt-4 mb-3">
-              <span class="badge rounded-pill fw-semibold ms-1 bg-primary-700" data-bs-toggle="tooltip" data-bs-title="Global Cloud">1</span>
+              <span class="badge rounded-pill fw-semibold ms-1 bg-custom-color" data-bs-toggle="tooltip" data-bs-title="Global Cloud">1</span>
               <span class="badge rounded-pill fw-semibold text-bg-info text-white ms-1" data-bs-toggle="tooltip" data-bs-title="Private Gateways">2</span>
               <span class="badge rounded-pill fw-semibold text-bg-primary ms-1" data-bs-toggle="tooltip" data-bs-title="Sites">6</span>
               <span class="badge rounded-pill fw-semibold text-bg-success ms-1" data-bs-toggle="tooltip" data-bs-title="IDACs">17</span>
@@ -262,7 +340,7 @@
             <ul class="tree">
               <li>
                 <input type="checkbox" id="" checked>
-                <label for="" class="cloud border border-primary-700 text-primary-700 rounded">
+                <label for="" class="cloud border border-custom-color text-custom-color rounded">
                   <span class="text-body">Global Cloud</span>
                   <span class="badge all-descendant-nodes fw-semibold bg-secondary-light ms-auto rounded-pill" data-bs-toggle="tooltip" data-bs-title="Direct and indirect nodes"></span>
                   <span class="badge direct-nodes fw-semibold bg-secondary ms-2 rounded-pill" data-bs-toggle="tooltip" data-bs-title="Direct nodes"></span>
